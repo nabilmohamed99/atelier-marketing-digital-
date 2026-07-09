@@ -1,25 +1,32 @@
-# Atelier — Introduction au Marketing Digital
+# Atelier — Introduction au Marketing Digital + Page 2 SEA
 
-Page HTML statique prête pour GitHub Pages.
+Projet HTML statique prêt pour GitHub Pages.
+
+## Pages incluses
+
+- `index.html` : atelier principal Marketing Digital avec QCM, KPI, classification en glisser-déposer et étude de cas.
+- `sea.html` : deuxième page SEA avec QCM interactif, calcul du Ad Rank, correction automatique et actions Quality Score.
+- `.nojekyll` : fichier utile pour éviter le traitement Jekyll par GitHub Pages.
 
 ## Déploiement rapide avec GitHub Pages
 
-1. Créez un nouveau dépôt GitHub, par exemple `atelier-marketing-digital`.
-2. Ajoutez les fichiers `index.html` et `.nojekyll` à la racine du dépôt.
-3. Allez dans **Settings** → **Pages**.
-4. Dans **Build and deployment**, choisissez **Deploy from a branch**.
-5. Sélectionnez la branche `main` et le dossier `/root`, puis cliquez sur **Save**.
-6. Après quelques minutes, la page sera disponible à l'adresse :
-   `https://VOTRE-USERNAME.github.io/atelier-marketing-digital/`
+1. Ajoutez `index.html`, `sea.html`, `README.md` et `.nojekyll` à la racine du dépôt GitHub.
+2. Allez dans **Settings** → **Pages**.
+3. Dans **Build and deployment**, choisissez **Deploy from a branch**.
+4. Sélectionnez la branche `main` et le dossier `/root`, puis cliquez sur **Save**.
+5. Après quelques minutes, la page principale sera disponible à l'adresse :
+   `https://VOTRE-USERNAME.github.io/NOM-DU-REPO/`
+6. La page SEA sera disponible à l'adresse :
+   `https://VOTRE-USERNAME.github.io/NOM-DU-REPO/sea.html`
 
 ## Déploiement avec Git
 
 ```bash
 git init
 git add .
-git commit -m "Publier l'atelier marketing digital"
+git commit -m "Ajouter atelier marketing digital et page SEA"
 git branch -M main
-git remote add origin https://github.com/VOTRE-USERNAME/atelier-marketing-digital.git
+git remote add origin https://github.com/VOTRE-USERNAME/NOM-DU-REPO.git
 git push -u origin main
 ```
 

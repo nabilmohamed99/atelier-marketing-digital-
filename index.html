@@ -289,9 +289,10 @@
       <div class="hero-card">
         <span class="eyebrow">Atelier interactif</span>
         <h1>Introduction au Marketing Digital</h1>
-        <p class="subtitle">Un support web prêt à publier sur GitHub Pages : QCM, calcul de KPIs, classification stratégique et étude de cas d'audit digital.</p>
+        <p class="subtitle">Un support web prêt à publier sur GitHub Pages : QCM, calcul de KPIs, classification stratégique, étude de cas d'audit digital et deuxième page dédiée au SEA.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#section-1">Commencer l'atelier</a>
+          <a class="btn btn-secondary" href="sea.html">Page 2 — Atelier SEA</a>
           <button class="btn-secondary" id="showAll">Afficher toutes les corrections</button>
           <button class="btn-secondary" id="hideAll">Masquer les corrections</button>
           <button class="btn-ghost" onclick="window.print()">Imprimer</button>
@@ -314,7 +315,7 @@
   </main>
   <div class="score-card" id="scoreCard">Score : 0 / 0</div>
   <footer class="container">
-    <p>Support basé sur <strong>Atelier_Marketing_Digital_Complet_v5.docx</strong>. Page statique compatible GitHub Pages, sans dépendance externe.</p>
+    <p>Support basé sur <strong>Atelier_Marketing_Digital_Complet_v5.docx</strong> et <strong>SEA_Ateliers.docx</strong>. Page statique compatible GitHub Pages, sans dépendance externe.</p>
   </footer>
   <script>
     const workshopData = {
@@ -1552,7 +1553,7 @@
     }
 
     function render() {
-      $('#nav').innerHTML = workshopData.sections.map((s, i) => `<a href="#${s.id}">${i+1}. ${esc(s.title.replace(/^Section \d+ — /,''))}</a>`).join('');
+      $('#nav').innerHTML = workshopData.sections.map((s, i) => `<a href="#${s.id}">${i+1}. ${esc(s.title.replace(/^Section \d+ — /,''))}</a>`).join('') + `<a href="sea.html">Page 2 — SEA</a>`;
       $('#stats').innerHTML = `
         <div class="stat"><strong>${workshopData.sections.length}</strong><span>sections</span></div>
         <div class="stat"><strong>${totalQuestions}</strong><span>questions QCM</span></div>
