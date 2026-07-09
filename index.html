@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier — Introduction au Marketing Digital</title>
+  <meta name="description" content="Atelier interactif de marketing digital : SEO, SEA, analytics, KPI, stratégie, funnel, IA, innovation et audit digital." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --ink: #172033;
+      --muted: #687385;
+      --primary: #174ea6;
+      --primary-2: #0b57d0;
+      --accent: #00a67e;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+      --success: #16a34a;
+      --line: #dfe6f2;
+      --soft: #eef5ff;
+      --radius: 18px;
+      --shadow: 0 18px 45px rgba(23, 78, 166, .11);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(23,78,166,.14), transparent 32rem),
+        radial-gradient(circle at top right, rgba(0,166,126,.13), transparent 28rem),
+        var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    header.hero { padding: 58px 0 32px; }
+    .hero-card {
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(238,245,255,.94));
+      border: 1px solid rgba(223,230,242,.9);
+      border-radius: 30px;
+      padding: clamp(28px, 5vw, 56px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card:after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(0,166,126,.14);
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      color: var(--primary);
+      background: rgba(23,78,166,.08);
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(2.15rem, 5vw, 4.3rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      max-width: 850px;
+    }
+    .subtitle { font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--muted); max-width: 760px; }
+    .hero-actions, .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 24px; }
+    button, .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 12px 17px;
+      font-weight: 800;
+      font-size: .95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    button:hover, .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 22px rgba(23,78,166,.23); }
+    .btn-secondary { background: white; color: var(--primary); border: 1px solid var(--line); }
+    .btn-ghost { background: var(--soft); color: var(--primary); }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(245,247,251,.88);
+      border-bottom: 1px solid rgba(223,230,242,.9);
+    }
+    .nav-inner { display: flex; gap: 10px; overflow-x: auto; padding: 12px 0; }
+    .nav-inner a {
+      white-space: nowrap;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: white;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      font-weight: 750;
+      font-size: .9rem;
+    }
+    .nav-inner a:hover { color: var(--primary); border-color: rgba(23,78,166,.3); }
+    main { padding: 30px 0 80px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 18px 0 24px;
+    }
+    .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: 0 10px 30px rgba(15,23,42,.04); }
+    .stat strong { font-size: 1.65rem; display: block; color: var(--primary); }
+    .stat span { color: var(--muted); font-weight: 700; }
+    .section {
+      margin: 28px 0;
+      background: rgba(255,255,255,.94);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(15,23,42,.06);
+      overflow: hidden;
+    }
+    .section-head {
+      padding: 28px;
+      background: linear-gradient(135deg, rgba(23,78,166,.09), rgba(0,166,126,.08));
+      border-bottom: 1px solid var(--line);
+    }
+    .section h2 { margin: 0 0 6px; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -.03em; }
+    .meta { color: var(--muted); font-weight: 650; }
+    .content { padding: 28px; }
+    .q-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .question-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
+      min-height: 100%;
+    }
+    .question-title { font-weight: 850; margin: 0 0 12px; }
+    .question-number { color: var(--primary); margin-right: 4px; }
+    .option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 11px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      margin: 7px 0;
+      color: #243044;
+      background: #f9fbff;
+    }
+    .option input { margin-top: 4px; }
+    .option.correct { border-color: rgba(22,163,74,.35); background: rgba(22,163,74,.10); }
+    .option.wrong { border-color: rgba(220,38,38,.35); background: rgba(220,38,38,.09); }
+    .answer-tag {
+      display: none;
+      margin-top: 12px;
+      color: var(--success);
+      font-weight: 850;
+      font-size: .92rem;
+    }
+    .show-answers .answer-tag { display: block; }
+    .panel {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .panel h3 { margin-top: 0; letter-spacing: -.02em; }
+    .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); }
+    table { border-collapse: collapse; width: 100%; min-width: 760px; background: #fff; }
+    th { background: #d7eafe; color: #17324d; text-align: left; }
+    th, td { border-bottom: 1px solid var(--line); padding: 12px; vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    .formula-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; padding: 0; list-style: none; }
+    .formula-list li { background: var(--soft); padding: 12px; border-radius: 14px; font-weight: 700; color: #243044; }
+    details { border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; background: #fff; margin-top: 14px; }
+    summary { cursor: pointer; font-weight: 850; color: var(--primary); }
+    .term-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
+    .term { padding: 8px 10px; background: #f7f9fd; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; color: #334155; }
+    .solution-grid { display: grid; grid-template-columns: repeat(5, minmax(180px, 1fr)); gap: 12px; overflow-x: auto; }
+    .solution-box { border: 1px solid var(--line); border-radius: 16px; padding: 14px; background: #fbfdff; min-width: 180px; }
+    .solution-box h4 { margin: 0 0 8px; color: var(--primary); }
+    .solution-box ul { padding-left: 18px; margin: 0; }
+    textarea { width: 100%; min-height: 90px; border: 1px solid var(--line); border-radius: 14px; padding: 12px; font: inherit; resize: vertical; }
+    .case-question { margin: 16px 0; }
+    .progress {
+      height: 12px;
+      border-radius: 999px;
+      background: #e7edf6;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+    .progress span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width .25s ease; }
+    .score-card { position: fixed; right: 18px; bottom: 18px; z-index: 12; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 999px; padding: 12px 16px; font-weight: 900; color: var(--primary); }
+    footer { padding: 30px 0 56px; color: var(--muted); text-align: center; }
+    @media (max-width: 900px) {
+      .stats, .q-grid, .formula-list { grid-template-columns: 1fr; }
+      .solution-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+      .content, .section-head { padding: 20px; }
+      .score-card { left: 16px; right: 16px; text-align: center; justify-content: center; }
+    }
+    @media print {
+      nav, .hero-actions, .toolbar, .score-card { display: none !important; }
+      body { background: white; }
+      .section, .hero-card { box-shadow: none; break-inside: avoid; }
+      .q-grid { grid-template-columns: 1fr; }
+      .option { border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-card">
+        <span class="eyebrow">Atelier interactif</span>
+        <h1>Introduction au Marketing Digital</h1>
+        <p class="subtitle">Un support web prêt à publier sur GitHub Pages : QCM, calcul de KPIs, classification stratégique et étude de cas d'audit digital.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#section-1">Commencer l'atelier</a>
+          <button class="btn-secondary" id="showAll">Afficher toutes les corrections</button>
+          <button class="btn-secondary" id="hideAll">Masquer les corrections</button>
+          <button class="btn-ghost" onclick="window.print()">Imprimer</button>
+        </div>
+        <div class="progress" aria-label="progression"><span id="progressBar"></span></div>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="container nav-inner" id="nav"></div>
+  </nav>
+  <main class="container">
+    <section class="stats" id="stats"></section>
+    <div class="toolbar">
+      <button class="btn-primary" id="checkAnswers">Corriger mes réponses</button>
+      <button class="btn-secondary" id="resetAnswers">Réinitialiser</button>
+      <a class="btn btn-ghost" href="#top">Retour en haut</a>
+    </div>
+    <div id="app"></div>
+  </main>
+  <div class="score-card" id="scoreCard">Score : 0 / 0</div>
+  <footer class="container">
+    <p>Support basé sur <strong>Atelier_Marketing_Digital_Complet_v5.docx</strong>. Page statique compatible GitHub Pages, sans dépendance externe.</p>
+  </footer>
+  <script>
+    const workshopData = {
+  "title": "Atelier — Introduction au Marketing Digital",
+  "subtitle": "QCM interactif, exercices de calcul KPI et cas d'audit digital",
+  "source": "Atelier_Marketing_Digital_Complet_v5.docx",
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Section 1 — Outils, leviers & canaux digitaux",
+      "level": "Fondamentaux",
+      "competence": "Identifier et maîtriser les outils clés du marketing digital",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Quelle différence principale existe entre SEO et SEA ?",
+          "options": {
+            "a": "Le SEO est gratuit et le SEA est payant",
+            "b": "Le SEA concerne les réseaux sociaux, le SEO non",
+            "c": "Le SEO se concentre uniquement sur les mots-clés"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 2,
+          "question": "Quel outil est idéal pour surveiller la performance des mots-clés en SEO ?",
+          "options": {
+            "a": "Google Search Console",
+            "b": "Google Analytics",
+            "c": "Facebook Insights"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 3,
+          "question": "L'UX (expérience utilisateur) se concentre sur :",
+          "options": {
+            "a": "La satisfaction et la facilité d'utilisation pour l'utilisateur",
+            "b": "L'optimisation technique du site",
+            "c": "La gestion des campagnes publicitaires"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 4,
+          "question": "Quel est l'objectif principal du marketing de contenu ?",
+          "options": {
+            "a": "Obtenir des clics rapides sur un site web",
+            "b": "Fournir de la valeur aux utilisateurs pour les convertir plus tard",
+            "c": "Réduire le coût des campagnes publicitaires"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 5,
+          "question": "Un livre blanc est :",
+          "options": {
+            "a": "Un document promotionnel court",
+            "b": "Un guide détaillé sur un sujet précis pour éduquer ou informer",
+            "c": "Une campagne de publicité sur les réseaux sociaux"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 6,
+          "question": "Quelle est la fonction principale d'une landing page ?",
+          "options": {
+            "a": "Présenter un produit uniquement",
+            "b": "Convertir les visiteurs en leads ou clients",
+            "c": "Augmenter le taux d'impressions"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 7,
+          "question": "Quel type de publicité est basé sur les bannières visuelles ?",
+          "options": {
+            "a": "Publicité display",
+            "b": "SEA",
+            "c": "Retargeting"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 8,
+          "question": "Le reciblage (retargeting) vise à :",
+          "options": {
+            "a": "Cibler une nouvelle audience",
+            "b": "Re-cibler des utilisateurs ayant déjà interagi",
+            "c": "Diffuser des campagnes de masse"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 9,
+          "question": "Google Ads permet de créer des campagnes sur :",
+          "options": {
+            "a": "La recherche et le display uniquement",
+            "b": "La recherche, le display et les vidéos",
+            "c": "Les réseaux sociaux uniquement"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 10,
+          "question": "Google Ads (AdWords) est basé sur un modèle économique :",
+          "options": {
+            "a": "Abonnement à l'usage",
+            "b": "La performance",
+            "c": "Freemium"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 11,
+          "question": "Quelle plateforme est utilisée pour gérer des campagnes sur Facebook et Instagram ?",
+          "options": {
+            "a": "Google Ads",
+            "b": "Business Manager",
+            "c": "Search Console"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 12,
+          "question": "Quelle est la fonction principale d'une charte de modération ?",
+          "options": {
+            "a": "Maintenir un ton cohérent et gérer les interactions sur une plateforme",
+            "b": "Augmenter le nombre d'impressions",
+            "c": "Optimiser le contenu SEO"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 13,
+          "question": "En UX, une navigation intuitive est essentielle pour :",
+          "options": {
+            "a": "Réduire le temps passé sur un site",
+            "b": "Améliorer l'expérience utilisateur et réduire le taux de rebond",
+            "c": "Augmenter le nombre de publicités vues"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 14,
+          "question": "Qu'est-ce que Google PageSpeed Insights ?",
+          "options": {
+            "a": "Un outil de Google pour mesurer la vitesse de chargement d'un site web",
+            "b": "Une application de messagerie pour professionnels",
+            "c": "Un réseau social créé par Google"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 15,
+          "question": "Qu'est-ce que le MVP ?",
+          "options": {
+            "a": "Minimum valable procès",
+            "b": "Minimum Viable Product",
+            "c": "Maximum valable procès"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 16,
+          "question": "Quel est le rôle des tests et de l'expérimentation ?",
+          "options": {
+            "a": "Identifier les besoins des clients",
+            "b": "Valider les idées et les hypothèses",
+            "c": "Établir des objectifs de vente"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 17,
+          "question": "Qu'est-ce que l'A/B testing ?",
+          "options": {
+            "a": "Une technique d'analyse des performances de vente",
+            "b": "Une approche de recherche qualitative pour comprendre les clients",
+            "c": "Une méthode pour comparer l'efficacité de différentes variantes marketing"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 18,
+          "question": "À quoi sert l'email automation ?",
+          "options": {
+            "a": "Envoyer un email manuel à chaque prospect",
+            "b": "Automatiser l'envoi d'emails en fonction du comportement de l'utilisateur",
+            "c": "Améliorer le SEO d'un site"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 19,
+          "question": "Qu'est-ce que le SMO (Social Media Optimization) ?",
+          "options": {
+            "a": "L'optimisation du référencement naturel sur Google",
+            "b": "L'ensemble des techniques pour optimiser sa présence et sa visibilité sur les réseaux sociaux",
+            "c": "La gestion des campagnes payantes sur les réseaux sociaux"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 20,
+          "question": "Les piliers de contenu sont :",
+          "options": {
+            "a": "Des thématiques principales autour desquelles s'organise toute la stratégie de contenu d'une marque",
+            "b": "Des formats de publications uniquement visuels",
+            "c": "Des outils de planification de campagnes publicitaires"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 21,
+          "question": "Une charte éditoriale définit :",
+          "options": {
+            "a": "Le budget alloué aux campagnes de contenu",
+            "b": "Les règles de ton, de style, de vocabulaire et de ligne directrice pour tous les contenus produits",
+            "c": "Les indicateurs de performance des publications"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 22,
+          "question": "Une plateforme de marque regroupe :",
+          "options": {
+            "a": "Les outils techniques utilisés pour diffuser les publicités",
+            "b": "L'identité, les valeurs, la mission, la vision et le positionnement d'une marque",
+            "c": "Le plan de communication annuel d'une entreprise"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 23,
+          "question": "Une charte IA en entreprise sert à :",
+          "options": {
+            "a": "Former les équipes à l'utilisation des logiciels de design",
+            "b": "Définir les règles d'usage éthique et responsable de l'intelligence artificielle au sein de l'organisation",
+            "c": "Automatiser la création de campagnes publicitaires"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 24,
+          "question": "Quelle est la différence entre identité visuelle et plateforme de marque ?",
+          "options": {
+            "a": "Il n'y a aucune différence, ce sont deux termes synonymes",
+            "b": "L'identité visuelle couvre les éléments graphiques (logo, couleurs, typographie), tandis que la plateforme de marque englobe le positionnement stratégique global",
+            "c": "La plateforme de marque concerne uniquement le digital"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 25,
+          "question": "Comment appelle-t-on le fait d'optimiser son contenu pour apparaître dans les réponses des IA génératives comme ChatGPT ou Gemini ?",
+          "options": {
+            "a": "SEO classique",
+            "b": "GEO (Generative Engine Optimization)",
+            "c": "AIO (AI Indexing Optimization)",
+            "d": "LLM Marketing"
+          },
+          "answer": "b"
+        }
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Section 2 — Analytics & mesure de performance (KPIs)",
+      "level": "Avancé",
+      "competence": "Calculer, interpréter et analyser les KPIs d'une campagne digitale",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Qu'est-ce que Google Analytics ?",
+          "options": {
+            "a": "Un service de messagerie développé par Google pour les entreprises",
+            "b": "Un outil d'analyse de données web permettant de suivre et d'analyser le trafic d'un site web",
+            "c": "Un réseau social créé par Google pour les entreprises"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 2,
+          "question": "Comment Google Analytics collecte-t-il des données sur un site web ?",
+          "options": {
+            "a": "En installant un code de suivi sur chaque page du site",
+            "b": "En utilisant des cookies pour suivre le comportement des utilisateurs",
+            "c": "En analysant les mots-clés saisis dans les moteurs de recherche"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 3,
+          "question": "Quels types d'informations Google Analytics peut-il fournir ?",
+          "options": {
+            "a": "Le nom et l'adresse e-mail de chaque visiteur",
+            "b": "Le nombre de visiteurs, les sources de trafic, les mots-clés, le temps passé sur le site",
+            "c": "Le chiffre d'affaires réalisé par le site"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 4,
+          "question": "Quel type d'informations peut-on obtenir via Google Search Console ?",
+          "options": {
+            "a": "Les mots-clés les plus populaires sur Google",
+            "b": "Le nombre total de recherches effectuées chaque jour",
+            "c": "Le nombre d'impressions, de clics, le CTR et la position moyenne dans les résultats de recherche"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 5,
+          "question": "Qu'est-ce que le taux de rebond ?",
+          "options": {
+            "a": "Le pourcentage de visiteurs qui quittent immédiatement le site sans interagir",
+            "b": "Le nombre total de visiteurs sur un site web",
+            "c": "Le nombre de visiteurs ayant accompli une tâche spécifique"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 6,
+          "question": "Que mesure le taux de clics (CTR) sur les moteurs de recherche ?",
+          "options": {
+            "a": "Le pourcentage d'utilisateurs qui cliquent sur les résultats par rapport aux impressions",
+            "b": "Le pourcentage d'utilisateurs qui réalisent une action souhaitée",
+            "c": "Le pourcentage d'utilisateurs qui quittent après avoir consulté une seule page"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 7,
+          "question": "Le CTR est un indicateur de :",
+          "options": {
+            "a": "Performance financière d'une campagne",
+            "b": "Interaction entre les clics et les impressions publicitaires",
+            "c": "Performance des impressions"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 8,
+          "question": "CPC signifie :",
+          "options": {
+            "a": "Coût par Clic",
+            "b": "Coût par Conversion",
+            "c": "Coût par Campagne"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 9,
+          "question": "Le CPM est utilisé pour mesurer :",
+          "options": {
+            "a": "Le coût par millier d'impressions",
+            "b": "Le coût par clic",
+            "c": "Le coût par lead"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 10,
+          "question": "Quelle métrique est utilisée pour calculer la couverture d'une campagne publicitaire ?",
+          "options": {
+            "a": "Le nombre d'utilisateurs uniques touchés",
+            "b": "Le nombre total d'impressions",
+            "c": "Le coût par clic"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 11,
+          "question": "Qu'est-ce que le CTR unique ?",
+          "options": {
+            "a": "Le taux de clics basé sur le nombre total d'impressions",
+            "b": "Le taux de clics mesuré sur le nombre total de couverture (utilisateurs uniques)",
+            "c": "Le taux de clics d'une campagne Facebook uniquement"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 12,
+          "question": "Qu'est-ce que la répétition (frequency) ?",
+          "options": {
+            "a": "Le nombre total de vues d'une publicité",
+            "b": "Le nombre moyen de fois qu'un utilisateur a vu la publicité",
+            "c": "Le nombre de clics générés"
+          },
+          "answer": "b"
+        }
+      ],
+      "calculation": {
+        "title": "Exercice 2.2 — Calcul de KPIs : Analyse d'une campagne multicanale",
+        "intro": "Vous êtes chargé(e) d'analyser les résultats d'une campagne digitale. Complétez le tableau puis répondez à la question.",
+        "columns": [
+          "Support",
+          "Budget",
+          "CPC",
+          "Clics",
+          "Impressions",
+          "CTR",
+          "Couverture",
+          "CTR unique",
+          "Répétition",
+          "Taux de conv.",
+          "Conversion",
+          "Coût/conv."
+        ],
+        "raw": [
+          "Search",
+          "12 000 MAD",
+          "3,00",
+          "?",
+          "40 000",
+          "?",
+          "",
+          "",
+          "4",
+          "?",
+          "10",
+          "?"
+        ],
+        "solution": [
+          "Search",
+          "12 000 MAD",
+          "3,00",
+          "4 000",
+          "40 000",
+          "10%",
+          "10 000",
+          "40%",
+          "4",
+          "0,25%",
+          "10",
+          "1 200 MAD"
+        ],
+        "formulas": [
+          "Clics = Budget ÷ CPC = 12 000 ÷ 3 = 4 000",
+          "CTR = Clics ÷ Impressions = 4 000 ÷ 40 000 = 10%",
+          "Couverture = Impressions ÷ Répétition = 40 000 ÷ 4 = 10 000",
+          "CTR unique = Clics ÷ Couverture = 4 000 ÷ 10 000 = 40%",
+          "Taux de conversion = Conversions ÷ Clics = 10 ÷ 4 000 = 0,25%",
+          "Coût/conv. = Budget ÷ Conversions = 12 000 ÷ 10 = 1 200 MAD"
+        ],
+        "question": "À quoi sert d'analyser le CTR ? Quelle décision peut-on prendre grâce à cet indicateur ?",
+        "suggested": "Le CTR sert à mesurer l'attractivité d'une annonce ou d'un résultat : si beaucoup de personnes voient le message mais cliquent peu, il faut améliorer le titre, le visuel, l'offre, le ciblage ou le call-to-action."
+      }
+    },
+    {
+      "id": "section-3",
+      "title": "Section 3 — Stratégie & architecture digitale",
+      "level": "Fondamentaux conceptuels",
+      "competence": "Maîtriser la hiérarchie stratégique",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "La stratégie marketing digitale sert surtout à :",
+          "options": {
+            "a": "Choisir des tactiques",
+            "b": "Définir une direction globale",
+            "c": "Programmer des posts"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 2,
+          "question": "Une voie stratégique correspond à :",
+          "options": {
+            "a": "Un outil",
+            "b": "Un objectif intermédiaire",
+            "c": "Une technique"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 3,
+          "question": "Quelle est la bonne hiérarchie ?",
+          "options": {
+            "a": "Stratégie → Voie → Leviers → Tactiques → Technique",
+            "b": "Tactique → Voie → Stratégie → Action",
+            "c": "Stratégie → Tactique → Voie → Technique"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 4,
+          "question": "Une tactique, c'est :",
+          "options": {
+            "a": "Une méthode pour appliquer une stratégie",
+            "b": "Un logiciel",
+            "c": "Un positionnement"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 5,
+          "question": "Une technique, c'est :",
+          "options": {
+            "a": "Une approche globale",
+            "b": "Un procédé précis d'exécution",
+            "c": "Un message de marque"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 6,
+          "question": "Le content marketing sert surtout à :",
+          "options": {
+            "a": "Relancer des inactifs",
+            "b": "Créer de la valeur",
+            "c": "Gérer les Ads"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 7,
+          "question": "Le traffic management vise à :",
+          "options": {
+            "a": "Gérer et optimiser les flux entre canaux",
+            "b": "Créer du contenu viral",
+            "c": "Tourner des vidéos"
+          },
+          "answer": "a"
+        }
+      ],
+      "classification": {
+        "title": "Exercice 3.2 — Classifiez chacun des 32 termes",
+        "terms": [
+          "Taux de conversion",
+          "Landing page",
+          "SEO (Search Engine Optimization)",
+          "Mailchimp",
+          "Notoriété de marque",
+          "Attirer du trafic",
+          "Google Analytics",
+          "Engagement communautaire",
+          "A/B test",
+          "Canva",
+          "SEA (Search Engine Advertising)",
+          "Taux d'engagement",
+          "Retargeting",
+          "WordPress",
+          "Génération de leads",
+          "SMO",
+          "CTR (Click Through Rate)",
+          "Marketing automation",
+          "Business Manager (Meta)",
+          "Email Marketing",
+          "Content Marketing",
+          "Marketing d'influence",
+          "Display Advertising",
+          "CPC (Cost Per Click)",
+          "Tunnel de conversion",
+          "Google Ads",
+          "Couverture",
+          "TikTok Business Manager",
+          "Nombre d'impressions",
+          "Lead magnet",
+          "Publier 3 posts/semaine",
+          "Optimiser une fiche produit"
+        ],
+        "solution": {
+          "Stratégie / voie stratégique": [
+            "Notoriété de marque",
+            "Attirer du trafic",
+            "Engagement communautaire",
+            "Génération de leads"
+          ],
+          "Leviers": [
+            "SEO (Search Engine Optimization)",
+            "SEA (Search Engine Advertising)",
+            "SMO",
+            "Marketing automation",
+            "Email Marketing",
+            "Content Marketing",
+            "Marketing d'influence",
+            "Display Advertising"
+          ],
+          "Tactiques": [
+            "Landing page",
+            "A/B test",
+            "Retargeting",
+            "Tunnel de conversion",
+            "Lead magnet",
+            "Publier 3 posts/semaine",
+            "Optimiser une fiche produit"
+          ],
+          "Outils": [
+            "Mailchimp",
+            "Google Analytics",
+            "Canva",
+            "WordPress",
+            "Business Manager (Meta)",
+            "Google Ads",
+            "TikTok Business Manager"
+          ],
+          "KPI": [
+            "Taux de conversion",
+            "Taux d'engagement",
+            "CTR (Click Through Rate)",
+            "CPC (Cost Per Click)",
+            "Couverture",
+            "Nombre d'impressions"
+          ]
+        }
+      }
+    },
+    {
+      "id": "section-4",
+      "title": "Section 4 — Inbound, outbound & funnel marketing",
+      "level": "Intermédiaire",
+      "competence": "Distinguer les approches et structurer un funnel",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "En Inbound, on cherche à :",
+          "options": {
+            "a": "Interrompre avec de la publicité",
+            "b": "Attirer par le contenu",
+            "c": "Téléphoner à froid"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 2,
+          "question": "L'Outbound se caractérise par :",
+          "options": {
+            "a": "Des actions directes / payantes",
+            "b": "Des contenus organiques",
+            "c": "Le bouche-à-oreille"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 3,
+          "question": "Le Funnel marketing sert à :",
+          "options": {
+            "a": "Optimiser les visuels",
+            "b": "Guider le client tout au long de son parcours",
+            "c": "Faire uniquement des pages de vente"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 4,
+          "question": "La première voie stratégique du funnel est :",
+          "options": {
+            "a": "Notoriété",
+            "b": "Fidélisation",
+            "c": "Conversion"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 5,
+          "question": "Le principal levier en Outbound est :",
+          "options": {
+            "a": "Le blog",
+            "b": "Les Ads payantes",
+            "c": "Le SEO"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 6,
+          "question": "Une stratégie Funnel bien structurée comprend :",
+          "options": {
+            "a": "Plusieurs voies",
+            "b": "Un seul canal",
+            "c": "Des publications ponctuelles"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 7,
+          "question": "Le SEO est :",
+          "options": {
+            "a": "Un levier",
+            "b": "Une stratégie",
+            "c": "Une voie stratégique"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 8,
+          "question": "Quel est l'objectif principal d'une campagne de notoriété ?",
+          "options": {
+            "a": "Générer des conversions",
+            "b": "Augmenter les ventes directes",
+            "c": "Accroître la visibilité de la marque"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 9,
+          "question": "Dans la phase « Convertir », qu'est-ce qu'un Lead Magnet ?",
+          "options": {
+            "a": "Un outil de mesure du trafic organique",
+            "b": "Un contenu premium offert en échange des coordonnées du visiteur",
+            "c": "Un système de points pour récompenser les apprenants",
+            "d": "Un email de relance envoyé aux leads inactifs"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 10,
+          "question": "Qu'est-ce que le lead scoring ?",
+          "options": {
+            "a": "Un système de notation des formations par les apprenants",
+            "b": "Un indicateur qui mesure le trafic organique d'un site",
+            "c": "Un mécanisme qui attribue des points aux leads selon leurs actions pour identifier ceux prêts à acheter",
+            "d": "Un outil de gamification pour fidéliser les utilisateurs"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 11,
+          "question": "Le parcours client désigne :",
+          "options": {
+            "a": "L'ensemble des étapes et interactions qu'un client vit avec une marque, de la découverte à la fidélisation",
+            "b": "Uniquement l'étape d'achat sur le site web",
+            "c": "Le trajet physique du client jusqu'au point de vente"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 12,
+          "question": "Un touchpoint est :",
+          "options": {
+            "a": "Un point de contact entre le client et la marque : site web, réseau social, publicité, point de vente, service client…",
+            "b": "Un objectif chiffré de conversion",
+            "c": "Un outil exclusivement utilisé en SEA"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 13,
+          "question": "Cartographier le parcours client permet notamment de :",
+          "options": {
+            "a": "Identifier les points de friction et les opportunités d'amélioration de l'expérience",
+            "b": "Réduire uniquement le budget publicitaire",
+            "c": "Remplacer entièrement le service client par de l'automatisation"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 14,
+          "question": "La personnalisation de l'expérience client à chaque étape du parcours repose surtout sur :",
+          "options": {
+            "a": "L'utilisation des données comportementales pour adapter le contenu et les offres à chaque profil",
+            "b": "L'envoi du même message à tous les contacts, sans distinction",
+            "c": "La suppression de tout contact humain"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 15,
+          "question": "L'entonnoir de conversion commence généralement par l'étape :",
+          "options": {
+            "a": "Notoriété (awareness)",
+            "b": "Fidélisation",
+            "c": "Achat"
+          },
+          "answer": "a"
+        }
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "Section 5 — Intégration technologique",
+      "level": "Intermédiaire-avancé",
+      "competence": "Comprendre les fondamentaux de l'IA, du Cloud et du Big Data en entreprise",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Qu'est-ce qu'une API ?",
+          "options": {
+            "a": "Un type de logiciel utilisé pour la gestion des bases de données",
+            "b": "Un ensemble de règles et de protocoles permettant à différentes applications logicielles de communiquer entre elles",
+            "c": "Un composant matériel utilisé dans l'informatique en nuage"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 2,
+          "question": "Qu'est-ce que le Machine Learning ?",
+          "options": {
+            "a": "Un processus où un programme apprend à partir des données sans être explicitement programmé",
+            "b": "Une méthode permettant uniquement de stocker des données dans le cloud",
+            "c": "Un type de matériel dédié à l'IA"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 3,
+          "question": "L'intelligence artificielle permet principalement :",
+          "options": {
+            "a": "D'exécuter des tâches nécessitant normalement l'intelligence humaine",
+            "b": "D'éliminer complètement l'intervention humaine",
+            "c": "De limiter les interactions entre entreprises et clients"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 4,
+          "question": "Parmi ces éléments, lequel ne fait PAS partie des avantages de la transformation digitale ?",
+          "options": {
+            "a": "Optimisation des processus",
+            "b": "Réduction de la productivité",
+            "c": "Amélioration de l'expérience client"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 5,
+          "question": "Qu'est-ce que le Deep Learning ?",
+          "options": {
+            "a": "Un sous-domaine du Machine Learning utilisant des réseaux de neurones profonds",
+            "b": "Une méthode pour stocker les données volumineuses",
+            "c": "Un algorithme qui fonctionne uniquement avec des données textuelles"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 6,
+          "question": "Quel facteur a le plus contribué à l'évolution récente de l'intelligence artificielle ?",
+          "options": {
+            "a": "L'augmentation de la puissance de calcul et la disponibilité massive des données",
+            "b": "La suppression des interactions humaines dans les processus métier",
+            "c": "L'obligation légale pour les entreprises d'utiliser l'IA"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 7,
+          "question": "Le Big Data fait généralement référence à des ensembles de données qui sont :",
+          "options": {
+            "a": "Petits et faciles à analyser",
+            "b": "Trop grands et complexes pour être traités par des outils traditionnels",
+            "c": "Structurés et stockés dans des bases de données simples"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 8,
+          "question": "Laquelle des options suivantes n'est PAS un modèle de service cloud ?",
+          "options": {
+            "a": "Infrastructure en tant que service (IaaS)",
+            "b": "Logiciel en tant que service (SaaS)",
+            "c": "Données en tant que service (DaaS)"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 9,
+          "question": "Lequel des éléments suivants est une application centrale de l'Intelligence Artificielle ?",
+          "options": {
+            "a": "Stockage de données",
+            "b": "Algorithmes d'apprentissage automatique permettant l'automatisation",
+            "c": "Campagnes de marketing numérique"
+          },
+          "answer": "b"
+        }
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "Section 6 — Marketing d'innovation",
+      "level": "Intermédiaire-avancé",
+      "competence": "Maîtriser les concepts d'innovation stratégique et de modèles économiques modernes",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Qu'est-ce que la stratégie de l'océan bleu ?",
+          "options": {
+            "a": "Une stratégie qui se concentre sur la réduction des coûts pour concurrencer sur les prix",
+            "b": "Une stratégie qui cherche à éliminer la concurrence en créant un nouveau marché",
+            "c": "Une stratégie de spécialisation sur un produit unique",
+            "d": "Une stratégie visant à imiter les leaders du marché"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 2,
+          "question": "Quel est l'objectif principal du Lean Startup ?",
+          "options": {
+            "a": "Minimiser le gaspillage de ressources et ajuster rapidement les produits selon les retours des utilisateurs",
+            "b": "Maximiser les profits dès le début",
+            "c": "Développer des prototypes avec un grand investissement initial",
+            "d": "Éviter tout risque en innovant"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 3,
+          "question": "Quel concept met l'accent sur la création d'un nouvel espace de marché où la concurrence est inexistante ?",
+          "options": {
+            "a": "La stratégie d'alignement de marché",
+            "b": "La stratégie de l'océan rouge",
+            "c": "La stratégie Océan Bleu",
+            "d": "La stratégie de différenciation"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 4,
+          "question": "Quelle est l'une des étapes clés de la méthodologie Lean Startup ?",
+          "options": {
+            "a": "Concevoir un produit parfait avant tout test",
+            "b": "Proposer un produit fini directement au marché",
+            "c": "Tester des hypothèses avec des itérations rapides",
+            "d": "Ignorer les retours utilisateurs pour éviter des modifications"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 5,
+          "question": "Quel est l'un des avantages du Lean Startup ?",
+          "options": {
+            "a": "Réduire le temps de mise sur le marché",
+            "b": "Maximiser les coûts de production",
+            "c": "Minimiser la prise de décision",
+            "d": "Favoriser l'immobilisme"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 6,
+          "question": "Dans la stratégie Océan Bleu, que signifie la création de valeur ?",
+          "options": {
+            "a": "Baisser les prix pour surpasser les concurrents",
+            "b": "Augmenter les prix pour maximiser les profits",
+            "c": "Innover pour offrir des solutions inédites aux clients tout en optimisant les coûts",
+            "d": "Proposer une nouvelle gamme de produits de luxe"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 7,
+          "question": "Quelle est la philosophie du Lean Startup ?",
+          "options": {
+            "a": "Concevoir, mesurer, apprendre",
+            "b": "Planifier, développer, vendre",
+            "c": "Implanter, mesurer, clôturer",
+            "d": "Innover, produire, distribuer"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 8,
+          "question": "Quel est un exemple typique d'un produit Lean Startup minimum viable ?",
+          "options": {
+            "a": "Un produit final sans test utilisateur",
+            "b": "Un prototype basique pour recueillir des retours rapides",
+            "c": "Un produit avec toutes les fonctionnalités avancées",
+            "d": "Un produit lancé directement à grande échelle"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 9,
+          "question": "L'innovation disruptive se caractérise par :",
+          "options": {
+            "a": "Des améliorations mineures aux produits existants",
+            "b": "Une technologie qui remplace un marché existant ou en crée un nouveau",
+            "c": "Un ajustement des processus internes uniquement",
+            "d": "L'utilisation de technologies existantes pour optimiser"
+          },
+          "answer": "b"
+        }
+      ]
+    },
+    {
+      "id": "section-7",
+      "title": "Section 7 — Audit marketing digital",
+      "level": "Application",
+      "competence": "Réaliser un audit de présence digitale complet et en tirer un diagnostic avec recommandations",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Un audit de présence digitale évalue en priorité :",
+          "options": {
+            "a": "Les résultats financiers globaux de l'entreprise",
+            "b": "Le site web, les réseaux sociaux, le SEO, le paid media et l'e-réputation d'une marque",
+            "c": "Uniquement le design du logo"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 2,
+          "question": "Avant de lancer un audit marketing digital, la première étape est généralement de :",
+          "options": {
+            "a": "Cartographier les plateformes actives de la marque et définir les objectifs de l'audit",
+            "b": "Créer immédiatement de nouveaux comptes sur tous les réseaux",
+            "c": "Lancer une campagne publicitaire test"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 3,
+          "question": "L'e-réputation se mesure notamment à travers :",
+          "options": {
+            "a": "Les avis clients, mentions de marque et sentiment exprimé en ligne",
+            "b": "Uniquement le chiffre d'affaires",
+            "c": "Le nombre d'employés de l'entreprise"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 4,
+          "question": "Dans un audit multi-plateformes, l'objectif est de :",
+          "options": {
+            "a": "Utiliser exactement le même contenu sur toutes les plateformes",
+            "b": "Évaluer la cohérence de marque tout en identifiant les spécificités et performances propres à chaque plateforme",
+            "c": "Se concentrer uniquement sur la plateforme la plus ancienne"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 5,
+          "question": "Un audit SEO dans le cadre d'un audit marketing digital porte sur :",
+          "options": {
+            "a": "Le positionnement dans les résultats de recherche, les mots-clés et la santé technique du site",
+            "b": "Uniquement le nombre de pages du site",
+            "c": "Le budget publicitaire de l'entreprise"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 6,
+          "question": "Le livrable final d'un audit marketing digital doit inclure :",
+          "options": {
+            "a": "Un diagnostic, un benchmark et des recommandations priorisées",
+            "b": "Uniquement une liste de captures d'écran des réseaux sociaux",
+            "c": "Un contrat de prestation publicitaire"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 7,
+          "question": "Le benchmark concurrentiel consiste à :",
+          "options": {
+            "a": "Comparer les pratiques, performances et positionnements de la marque à ceux de concurrents ou références du secteur",
+            "b": "Copier intégralement la stratégie d'un concurrent",
+            "c": "Mesurer uniquement le budget publicitaire des concurrents"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 8,
+          "question": "Pour choisir les acteurs à intégrer dans un benchmark, on privilégie :",
+          "options": {
+            "a": "Des concurrents directs ainsi que des références inspirantes, même hors secteur",
+            "b": "Uniquement le plus grand groupe international du marché",
+            "c": "Des marques choisies au hasard"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 9,
+          "question": "Un benchmark digital pertinent compare généralement :",
+          "options": {
+            "a": "Des indicateurs chiffrés et des éléments qualitatifs",
+            "b": "Uniquement les logos des concurrents",
+            "c": "Le nombre d'employés du service marketing des concurrents"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 10,
+          "question": "Laquelle de ces sources est typiquement utilisée pour l'analyse quantitative d'un audit marketing digital ?",
+          "options": {
+            "a": "Google Analytics, Search Console et les statistiques natives des réseaux sociaux",
+            "b": "Des entretiens qualitatifs avec les clients",
+            "c": "Des ateliers de brainstorming en interne"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 11,
+          "question": "Parmi ces indicateurs, lequel relève de l'analyse quantitative d'un audit digital ?",
+          "options": {
+            "a": "Le taux d'engagement moyen par publication",
+            "b": "L'impression subjective des internautes sur le ton de la marque",
+            "c": "Le style graphique perçu comme moderne ou daté"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 12,
+          "question": "L'analyse quantitative permet notamment de :",
+          "options": {
+            "a": "Objectiver des constats et suivre l'évolution des performances dans le temps",
+            "b": "Remplacer entièrement le jugement humain",
+            "c": "Éviter toute analyse qualitative"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 13,
+          "question": "Un benchmark quantitatif compare généralement :",
+          "options": {
+            "a": "Des KPIs chiffrés entre la marque et ses références",
+            "b": "Uniquement les logos des concurrents",
+            "c": "Les opinions personnelles des dirigeants"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 14,
+          "question": "L'analyse qualitative dans un audit marketing digital porte principalement sur :",
+          "options": {
+            "a": "Le ton éditorial, le storytelling et la cohérence de l'identité de marque sur les différentes plateformes",
+            "b": "Le nombre exact de publications par semaine",
+            "c": "Le budget publicitaire dépensé"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 15,
+          "question": "Un diagnostic SWOT dans un audit marketing digital sert à :",
+          "options": {
+            "a": "Synthétiser les constats qualitatifs et quantitatifs pour orienter les recommandations stratégiques",
+            "b": "Remplacer complètement le benchmark",
+            "c": "Servir uniquement de support visuel sans lien avec les recommandations"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 16,
+          "question": "Pourquoi combiner analyse quantitative et qualitative dans un audit marketing digital ?",
+          "options": {
+            "a": "Pour obtenir une vision complète : le combien et le comment/pourquoi",
+            "b": "Parce que l'une des deux méthodes est inutile",
+            "c": "Pour doubler inutilement le temps de l'audit"
+          },
+          "answer": "a"
+        }
+      ],
+      "caseStudy": {
+        "title": "Exercice 7.5 — Étude de cas : Audit de présence digitale multi-plateformes",
+        "situation": "Une institution publique dispose d'une présence active sur 5 plateformes (Facebook, Instagram, TikTok, YouTube, LinkedIn) depuis 2 ans. L'audit révèle un bon engagement sur Facebook et Instagram, un contenu TikTok pionnier dans son secteur mais peu exploité, une audience LinkedIn quasi inexistante malgré un contenu institutionnel publié régulièrement, et une chaîne YouTube avec très peu de vues malgré des vidéos de qualité. La direction souhaite un plan d'action pour les 12 prochains mois.",
+        "questions": [
+          "Quelles données quantitatives, par plateforme, collecteriez-vous en priorité pour objectiver ce constat ?",
+          "Quels éléments qualitatifs, ton, format et storytelling, analyseriez-vous pour comprendre l'écart de performance entre les plateformes ?",
+          "Comment structureriez-vous un benchmark concurrentiel pour cette institution ?",
+          "Construisez une matrice SWOT synthétique à partir des éléments de la mise en situation.",
+          "Quelles seraient vos 3 recommandations prioritaires pour le plan d'action des 12 prochains mois ?"
+        ],
+        "suggested": [
+          "Collecter portée, impressions, engagement, taux d'engagement, clics, vues vidéo, durée moyenne de visionnage, croissance d'audience, fréquence de publication, taux de complétion vidéo et trafic généré vers le site.",
+          "Analyser l'adaptation du format à chaque plateforme, la clarté du message, la régularité, les hooks vidéo, la tonalité institutionnelle, la qualité du storytelling, la cohérence visuelle et les appels à l'action.",
+          "Comparer des institutions similaires, des références nationales et internationales, puis analyser leurs formats, plateformes prioritaires, KPIs, storytelling, fréquence et bonnes pratiques par canal.",
+          "Forces : engagement Facebook/Instagram et vidéos de qualité. Faiblesses : LinkedIn faible, YouTube peu visible, TikTok sous-exploité. Opportunités : contenus courts, SEO vidéo, partenariats et calendrier éditorial. Menaces : baisse de visibilité organique, concurrence attentionnelle, manque de ressources.",
+          "1) Repenser LinkedIn avec une ligne éditoriale B2B/institutionnelle claire. 2) Transformer les vidéos YouTube en capsules courtes pour TikTok/Reels/Shorts. 3) Mettre en place un tableau de bord mensuel avec objectifs, KPIs et tests éditoriaux."
+        ]
+      }
+    }
+  ]
+};
+
+    const $ = (selector, root=document) => root.querySelector(selector);
+    const $$ = (selector, root=document) => Array.from(root.querySelectorAll(selector));
+    const letters = ['a','b','c','d','e'];
+    const esc = (s) => String(s ?? '').replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+    const totalQuestions = workshopData.sections.reduce((acc, s) => acc + (s.qcms?.length || 0), 0);
+
+    function optionLabel(letter, text, name, answer) {
+      return `<label class="option" data-option="${letter}" data-answer="${answer}"><input type="radio" name="${name}" value="${letter}"> <span><strong>${letter})</strong> ${esc(text)}</span></label>`;
+    }
+
+    function renderQCM(section) {
+      return `<div class="q-grid">${section.qcms.map((item, idx) => {
+        const qid = `${section.id}-q${idx+1}`;
+        return `<article class="question-card" data-qid="${qid}" data-answer="${item.answer}">
+          <p class="question-title"><span class="question-number">${item.n}.</span>${esc(item.question)}</p>
+          ${Object.entries(item.options).map(([letter, text]) => optionLabel(letter, text, qid, item.answer)).join('')}
+          <div class="answer-tag">Réponse : ${item.answer.toUpperCase()}</div>
+        </article>`;
+      }).join('')}</div>`;
+    }
+
+    function renderCalculation(calc) {
+      if (!calc) return '';
+      const header = calc.columns.map(c => `<th>${esc(c)}</th>`).join('');
+      const raw = calc.raw.map(c => `<td>${esc(c)}</td>`).join('');
+      const sol = calc.solution.map(c => `<td><strong>${esc(c)}</strong></td>`).join('');
+      return `<div class="panel">
+        <h3>${esc(calc.title)}</h3>
+        <p>${esc(calc.intro)}</p>
+        <div class="table-wrap"><table><thead><tr>${header}</tr></thead><tbody><tr>${raw}</tr><tr class="correction-row"><td colspan="${calc.columns.length}"><strong>Correction proposée ci-dessous.</strong></td></tr><tr class="solution-row">${sol}</tr></tbody></table></div>
+        <details><summary>Afficher les formules</summary><ul class="formula-list">${calc.formulas.map(f => `<li>${esc(f)}</li>`).join('')}</ul></details>
+        <div class="case-question"><p><strong>${esc(calc.question)}</strong></p><textarea placeholder="Votre réponse..."></textarea></div>
+        <details><summary>Exemple de réponse</summary><p>${esc(calc.suggested)}</p></details>
+      </div>`;
+    }
+
+    function renderClassification(cls) {
+      if (!cls) return '';
+      const boxes = Object.entries(cls.solution).map(([cat, terms]) => `<div class="solution-box"><h4>${esc(cat)}</h4><ul>${terms.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`).join('');
+      return `<div class="panel">
+        <h3>${esc(cls.title)}</h3>
+        <p>Classez chaque terme dans la bonne catégorie : Stratégie, Leviers, Tactiques, Outils ou KPI.</p>
+        <div class="term-cloud">${cls.terms.map(t => `<span class="term">${esc(t)}</span>`).join('')}</div>
+        <div class="table-wrap"><table><thead><tr><th>Stratégie</th><th>Leviers</th><th>Tactiques</th><th>Outils</th><th>KPI</th></tr></thead><tbody>${Array.from({length: 7}).map(()=>'<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>').join('')}</tbody></table></div>
+        <details><summary>Afficher une correction proposée</summary><div class="solution-grid">${boxes}</div></details>
+      </div>`;
+    }
+
+    function renderCaseStudy(cs) {
+      if (!cs) return '';
+      return `<div class="panel">
+        <h3>${esc(cs.title)}</h3>
+        <p><strong>Mise en situation —</strong> ${esc(cs.situation)}</p>
+        ${cs.questions.map((question, i) => `<div class="case-question"><p><strong>${i+1}. ${esc(question)}</strong></p><textarea placeholder="Votre réponse..."></textarea><details><summary>Exemple de réponse</summary><p>${esc(cs.suggested[i])}</p></details></div>`).join('')}
+      </div>`;
+    }
+
+    function render() {
+      $('#nav').innerHTML = workshopData.sections.map((s, i) => `<a href="#${s.id}">${i+1}. ${esc(s.title.replace(/^Section \d+ — /,''))}</a>`).join('');
+      $('#stats').innerHTML = `
+        <div class="stat"><strong>${workshopData.sections.length}</strong><span>sections</span></div>
+        <div class="stat"><strong>${totalQuestions}</strong><span>questions QCM</span></div>
+        <div class="stat"><strong>1</strong><span>exercice KPI</span></div>
+        <div class="stat"><strong>1</strong><span>cas d'audit</span></div>`;
+      $('#app').innerHTML = workshopData.sections.map(section => `<section class="section" id="${section.id}">
+        <div class="section-head"><h2>${esc(section.title)}</h2><div class="meta">Niveau : ${esc(section.level)} | Compétence visée : ${esc(section.competence)}</div></div>
+        <div class="content">${renderQCM(section)}${renderCalculation(section.calculation)}${renderClassification(section.classification)}${renderCaseStudy(section.caseStudy)}</div>
+      </section>`).join('');
+      updateScore();
+    }
+
+    function updateScore(mark=false) {
+      let answered = 0, correct = 0;
+      $$('.question-card').forEach(card => {
+        const selected = $('input:checked', card);
+        const answer = card.dataset.answer;
+        $$('.option', card).forEach(opt => opt.classList.remove('correct','wrong'));
+        if (selected) {
+          answered++;
+          if (selected.value === answer) correct++;
+          if (mark) {
+            $$('.option', card).forEach(opt => {
+              if (opt.dataset.option === answer) opt.classList.add('correct');
+              if (opt.querySelector('input').checked && opt.dataset.option !== answer) opt.classList.add('wrong');
+            });
+          }
+        } else if (mark) {
+          $$('.option', card).forEach(opt => { if (opt.dataset.option === answer) opt.classList.add('correct'); });
+        }
+      });
+      $('#scoreCard').textContent = `Score : ${correct} / ${totalQuestions} — réponses : ${answered}/${totalQuestions}`;
+      $('#progressBar').style.width = `${Math.round((answered / totalQuestions) * 100)}%`;
+      localStorage.setItem('atelierMarketingAnswers', JSON.stringify($$('input[type=radio]:checked').map(i => [i.name, i.value])));
+    }
+
+    function restoreAnswers() {
+      try {
+        const saved = new Map(JSON.parse(localStorage.getItem('atelierMarketingAnswers') || '[]'));
+        saved.forEach((value, name) => {
+          const input = $(`input[name="${CSS.escape(name)}"][value="${value}"]`);
+          if (input) input.checked = true;
+        });
+      } catch(e) {}
+      updateScore();
+    }
+
+    document.addEventListener('change', e => { if (e.target.matches('input[type=radio]')) updateScore(); });
+    $('#checkAnswers').addEventListener('click', () => { document.body.classList.add('show-answers'); updateScore(true); });
+    $('#showAll').addEventListener('click', () => { document.body.classList.add('show-answers'); updateScore(true); $$('details').forEach(d => d.open = true); });
+    $('#hideAll').addEventListener('click', () => { document.body.classList.remove('show-answers'); $$('.option').forEach(o => o.classList.remove('correct','wrong')); });
+    $('#resetAnswers').addEventListener('click', () => { $$('input[type=radio]').forEach(i => i.checked = false); $$('textarea').forEach(t => t.value = ''); localStorage.removeItem('atelierMarketingAnswers'); document.body.classList.remove('show-answers'); updateScore(false); });
+
+    render();
+    restoreAnswers();
+  </script>
+</body>
+</html>
