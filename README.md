@@ -1,33 +1,41 @@
-# Atelier — Introduction au Marketing Digital + Page 2 SEA
+# Atelier — Introduction au Marketing Digital
 
-Projet HTML statique prêt pour GitHub Pages.
+Page HTML statique prête pour GitHub Pages.
 
-## Pages incluses
-
-- `index.html` : atelier principal Marketing Digital avec QCM, KPI, classification en glisser-déposer et étude de cas.
-- `sea.html` : deuxième page SEA avec QCM interactif, calcul du Ad Rank, correction automatique et actions Quality Score.
-- `.nojekyll` : fichier utile pour éviter le traitement Jekyll par GitHub Pages.
+La version inclut un exercice de classification en glisser-déposer : les étudiants déplacent les termes vers les bonnes colonnes, puis cliquent sur “Corriger la classification”.
 
 ## Déploiement rapide avec GitHub Pages
 
-1. Ajoutez `index.html`, `sea.html`, `README.md` et `.nojekyll` à la racine du dépôt GitHub.
-2. Allez dans **Settings** → **Pages**.
-3. Dans **Build and deployment**, choisissez **Deploy from a branch**.
-4. Sélectionnez la branche `main` et le dossier `/root`, puis cliquez sur **Save**.
-5. Après quelques minutes, la page principale sera disponible à l'adresse :
-   `https://VOTRE-USERNAME.github.io/NOM-DU-REPO/`
-6. La page SEA sera disponible à l'adresse :
-   `https://VOTRE-USERNAME.github.io/NOM-DU-REPO/sea.html`
+1. Créez un nouveau dépôt GitHub, par exemple `atelier-marketing-digital`.
+2. Ajoutez les fichiers `index.html` et `.nojekyll` à la racine du dépôt.
+3. Allez dans **Settings** → **Pages**.
+4. Dans **Build and deployment**, choisissez **Deploy from a branch**.
+5. Sélectionnez la branche `main` et le dossier `/root`, puis cliquez sur **Save**.
+6. Après quelques minutes, la page sera disponible à l'adresse :
+   `https://VOTRE-USERNAME.github.io/atelier-marketing-digital/`
 
 ## Déploiement avec Git
 
 ```bash
 git init
 git add .
-git commit -m "Ajouter atelier marketing digital et page SEA"
+git commit -m "Publier l'atelier marketing digital"
 git branch -M main
-git remote add origin https://github.com/VOTRE-USERNAME/NOM-DU-REPO.git
+git remote add origin https://github.com/VOTRE-USERNAME/atelier-marketing-digital.git
 git push -u origin main
 ```
 
 Ensuite, activez GitHub Pages depuis **Settings** → **Pages**.
+
+
+## Mise à jour — Page 3 SEO
+
+Cette version ajoute une troisième page pédagogique **Référencement & SEO** avec :
+
+- Quiz interactifs sur hébergement, indexation, positionnement, KPI et intentions de recherche.
+- Ateliers Google Search Console avec captures intégrées.
+- Calculs SEO guidés : CTR, part de trafic, lecture sitemap.
+- Exercice drag & drop pour classifier les mots-clés.
+- Corrections masquées par défaut, affichables avec les boutons de correction.
+
+Pour publier la mise à jour sur GitHub Pages, remplacez `index.html`, ajoutez le dossier `assets/`, puis attendez le workflow Pages dans l'onglet **Actions**.

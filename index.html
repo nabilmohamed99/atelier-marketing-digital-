@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atelier — Introduction au Marketing Digital</title>
-  <meta name="description" content="Atelier interactif de marketing digital : SEO, SEA, analytics, KPI, stratégie, funnel, IA, innovation et audit digital." />
+  <title>Atelier — Marketing Digital & SEO</title>
+  <meta name="description" content="Atelier interactif de marketing digital et SEO : QCM, KPI, stratégie, funnel, audit digital, Google Search Console et exercices pratiques." />
   <style>
     :root {
       --bg: #f5f7fb;
@@ -256,6 +256,62 @@
     .solution-box { border: 1px solid var(--line); border-radius: 16px; padding: 14px; background: #fbfdff; min-width: 180px; }
     .solution-box h4 { margin: 0 0 8px; color: var(--primary); }
     .solution-box ul { padding-left: 18px; margin: 0; }
+
+    .source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(0,166,126,.10);
+      color: #047857;
+      font-weight: 900;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .025em;
+    }
+    .summary-card {
+      border: 1px solid rgba(23,78,166,.18);
+      background: linear-gradient(135deg, #f8fbff, #eefaf6);
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 20px;
+      color: #334155;
+      font-weight: 680;
+    }
+    .lab-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+    .lab-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(15,23,42,.04);
+    }
+    .lab-card h3 { margin: 0 0 8px; letter-spacing: -.02em; }
+    .lab-intro { color: var(--muted); font-weight: 650; margin-top: 0; }
+    .lab-image {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px;
+      margin: 8px 0 16px;
+    }
+    .lab-answer { margin: 14px 0; }
+    .lab-answer label { display: block; font-weight: 850; margin-bottom: 8px; }
+    .lab-note {
+      border-left: 4px solid var(--primary);
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 14px;
+      color: #243044;
+      font-weight: 700;
+    }
+
     textarea { width: 100%; min-height: 90px; border: 1px solid var(--line); border-radius: 14px; padding: 12px; font: inherit; resize: vertical; }
     .case-question { margin: 16px 0; }
     .progress {
@@ -288,11 +344,10 @@
     <div class="container">
       <div class="hero-card">
         <span class="eyebrow">Atelier interactif</span>
-        <h1>Introduction au Marketing Digital</h1>
-        <p class="subtitle">Un support web prêt à publier sur GitHub Pages : QCM, calcul de KPIs, classification stratégique, étude de cas d'audit digital et deuxième page dédiée au SEA.</p>
+        <h1>Marketing Digital & SEO</h1>
+        <p class="subtitle">Un support web complet prêt pour GitHub Pages : marketing digital, SEO, Google Search Console, calculs KPI, drag & drop, ateliers pratiques et corrections guidées.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#section-1">Commencer l'atelier</a>
-          <a class="btn btn-secondary" href="sea.html">Page 2 — Atelier SEA</a>
+          <a class="btn btn-primary" href="#section-1">Commencer l'atelier</a><a class="btn btn-ghost" href="#seo-page-3-intro">Aller à la page SEO</a>
           <button class="btn-secondary" id="showAll">Afficher toutes les corrections</button>
           <button class="btn-secondary" id="hideAll">Masquer les corrections</button>
           <button class="btn-ghost" onclick="window.print()">Imprimer</button>
@@ -315,13 +370,13 @@
   </main>
   <div class="score-card" id="scoreCard">Score : 0 / 0</div>
   <footer class="container">
-    <p>Support basé sur <strong>Atelier_Marketing_Digital_Complet_v5.docx</strong> et <strong>SEA_Ateliers.docx</strong>. Page statique compatible GitHub Pages, sans dépendance externe.</p>
+    <p>Support basé sur <strong>Atelier_Marketing_Digital_Complet_v5.docx</strong> et <strong>SEOAteliers_Complet docx.docx</strong>. Page statique compatible GitHub Pages, sans dépendance externe.</p>
   </footer>
   <script>
     const workshopData = {
-  "title": "Atelier — Introduction au Marketing Digital",
-  "subtitle": "QCM interactif, exercices de calcul KPI et cas d'audit digital",
-  "source": "Atelier_Marketing_Digital_Complet_v5.docx",
+  "title": "Atelier — Marketing Digital & SEO",
+  "subtitle": "QCM interactifs, calculs KPI, drag & drop, audit digital et ateliers SEO avec Google Search Console",
+  "source": "Atelier_Marketing_Digital_Complet_v5.docx + SEOAteliers_Complet docx.docx",
   "sections": [
     {
       "id": "section-1",
@@ -1475,6 +1530,632 @@
           "1) Repenser LinkedIn avec une ligne éditoriale B2B/institutionnelle claire. 2) Transformer les vidéos YouTube en capsules courtes pour TikTok/Reels/Shorts. 3) Mettre en place un tableau de bord mensuel avec objectifs, KPIs et tests éditoriaux."
         ]
       }
+    },
+    {
+      "id": "seo-page-3-intro",
+      "title": "Page 3 — Référencement & SEO : hébergement, indexation et bases techniques",
+      "pageLabel": "Nouvelle page SEO",
+      "level": "Fondamentaux + pratique",
+      "competence": "Comprendre l'hébergement web, l'indexation et les premiers éléments SEO à auditer",
+      "summary": "Cette page transforme le support SEO en atelier web interactif : quiz corrigés, captures Google Search Console, calculs SEO et exercices de rédaction autour des intentions de recherche.",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Qu'est-ce que le cPanel en hébergement web ?",
+          "options": {
+            "a": "Un panneau de contrôle pour configurer les serveurs",
+            "b": "Un type de câble utilisé pour la connexion Internet",
+            "c": "Un panneau pour gérer un espace d'hébergement"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 2,
+          "question": "Qu'est-ce qu'un nom de domaine ?",
+          "options": {
+            "a": "Le nom d'une personne",
+            "b": "Une adresse IP",
+            "c": "Une adresse web conviviale qui permet d'accéder à un site"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 3,
+          "question": "Qu'est-ce que la bande passante d'un serveur web ?",
+          "options": {
+            "a": "Le nombre de visiteurs autorisés à accéder au site",
+            "b": "La quantité de données transférées entre le site et les visiteurs en un laps de temps donné",
+            "c": "La vitesse de chargement d'un site web"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 4,
+          "question": "Quelle est la différence entre l'hébergement partagé et l'hébergement dédié ?",
+          "options": {
+            "a": "Il n'y a pas de différence",
+            "b": "Plusieurs sites partagent les mêmes ressources en hébergement partagé, tandis qu'un serveur dédié réserve un serveur entier pour un site",
+            "c": "L'hébergement partagé est plus cher que l'hébergement dédié"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 5,
+          "question": "Qu'est-ce qu'un serveur web ?",
+          "options": {
+            "a": "Un ordinateur professionnel",
+            "b": "Un ordinateur qui stocke et distribue des sites web aux utilisateurs via Internet",
+            "c": "Un ordinateur utilisé uniquement pour le design"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 6,
+          "question": "Qu'est-ce qu'un sitemap en SEO ?",
+          "options": {
+            "a": "Une description marketing du site",
+            "b": "Une liste structurée des URL/pages d'un site pour aider les moteurs à les explorer",
+            "c": "Une liste de couleurs et typographies du site"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 7,
+          "question": "Quelle est la différence entre référencement et positionnement ?",
+          "options": {
+            "a": "Il n'y a pas de différence",
+            "b": "Le référencement concerne l'indexation/la présence, le positionnement concerne le classement dans les résultats",
+            "c": "Le référencement concerne uniquement les annonces payantes"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 8,
+          "question": "Quelle est la signification de SERP ?",
+          "options": {
+            "a": "Service de Référencement Personnel",
+            "b": "Page de résultats de moteur de recherche",
+            "c": "Stratégie d'Engagement en Référencement Publicitaire"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 9,
+          "question": "Quel est le rôle d'un crawler dans un moteur de recherche ?",
+          "options": {
+            "a": "Optimiser les sites web",
+            "b": "Collecter des informations sur les pages web pour les indexer",
+            "c": "Créer du contenu web",
+            "d": "Gérer les publicités"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 10,
+          "question": "Qu'est-ce qu'une balise meta description ?",
+          "options": {
+            "a": "Une balise qui définit le contenu principal",
+            "b": "Une balise qui fournit une brève description de la page",
+            "c": "Une balise qui indique uniquement les mots-clés",
+            "d": "Une balise qui optimise les images"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 11,
+          "question": "Qu'est-ce qu'un fichier robots.txt ?",
+          "options": {
+            "a": "Un fichier de design",
+            "b": "Un fichier qui soumet automatiquement le site à Google",
+            "c": "Un fichier qui donne des directives aux robots des moteurs de recherche",
+            "d": "Un fichier qui crée des redirections automatiques"
+          },
+          "answer": "c"
+        }
+      ],
+      "labs": [
+        {
+          "title": "Atelier 1 — Audit rapide avec l'opérateur site:",
+          "intro": "Dans Google, tapez site:hec.ac.ma/ puis choisissez deux pages. L'objectif est de relier ce que Google affiche à la structure SEO réelle de la page.",
+          "questions": [
+            "Page 1 : indiquez le titre de page, l'URL, la meta title et la meta description.",
+            "Page 2 : indiquez le titre de page, l'URL, la meta title et la meta description.",
+            "Analyse : les titres sont-ils clairs, différenciés et orientés recherche utilisateur ?"
+          ],
+          "suggested": [
+            "Bon réflexe : copier l'URL exacte, lire le title affiché dans la SERP et vérifier si la description donne envie de cliquer.",
+            "Comparer les deux pages permet de repérer les titres dupliqués, descriptions trop génériques ou pages peu optimisées.",
+            "Décision possible : réécrire les titles/descriptions prioritaires pour améliorer le CTR organique."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seo-positionnement",
+      "title": "SEO — Positionnement sur les moteurs de recherche",
+      "pageLabel": "Page 3",
+      "level": "Fondamentaux SEO",
+      "competence": "Identifier les critères qui influencent le classement naturel d'un site",
+      "summary": "Un bon positionnement combine qualité du contenu, pertinence sémantique, expérience mobile, rapidité, structure HTML et popularité via les liens entrants.",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Quel est le premier critère de positionnement sur la partie sémantique ?",
+          "options": {
+            "a": "La sécurité du site",
+            "b": "La présence de backlinks",
+            "c": "Le contenu de qualité",
+            "d": "L'optimisation mobile"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 2,
+          "question": "Quelle est l'importance de la méta-description pour une page web ?",
+          "options": {
+            "a": "Elle augmente directement la vitesse de chargement",
+            "b": "Elle sert de principal contenu",
+            "c": "Elle remplace les mots-clés",
+            "d": "Elle fournit un résumé concis qui peut encourager les clics"
+          },
+          "answer": "d"
+        },
+        {
+          "n": 3,
+          "question": "Comment utiliser les mots-clés dans le corps de page ?",
+          "options": {
+            "a": "Les répéter au maximum",
+            "b": "Les intégrer naturellement et de façon pertinente",
+            "c": "Les ignorer complètement",
+            "d": "Utiliser uniquement des mots-clés génériques"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 4,
+          "question": "Quel rôle joue la compatibilité mobile selon Google ?",
+          "options": {
+            "a": "Elle est cruciale car Google privilégie les sites adaptés aux mobiles",
+            "b": "Aucun rôle",
+            "c": "Elle est moins importante que la publicité",
+            "d": "Elle est uniquement utile en e-commerce"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 5,
+          "question": "Pourquoi mettre à jour régulièrement le contenu ?",
+          "options": {
+            "a": "Cela n'a aucune influence",
+            "b": "Cela nuit toujours au positionnement",
+            "c": "Cela maintient le site pertinent pour les moteurs et les utilisateurs",
+            "d": "C'est utile uniquement pour les blogs"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 6,
+          "question": "Vrai ou Faux : le temps de chargement d'une page n'a aucun impact sur le SEO.",
+          "options": {
+            "a": "Vrai",
+            "b": "Faux"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 7,
+          "question": "Qu'est-ce qu'un backlink ?",
+          "options": {
+            "a": "Un lien vers une autre page de votre propre site",
+            "b": "Un lien provenant d'un site externe vers le vôtre",
+            "c": "Un lien interne"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 8,
+          "question": "Qu'est-ce qu'une balise H1 en SEO ?",
+          "options": {
+            "a": "Une balise pour améliorer la vitesse",
+            "b": "Une balise qui structure le titre principal du contenu",
+            "c": "Une balise réservée au SEO local"
+          },
+          "answer": "b"
+        }
+      ],
+      "labs": [
+        {
+          "title": "Mini-audit positionnement",
+          "intro": "Choisissez une page web réelle et notez les signaux visibles : H1, title, meta description, compatibilité mobile apparente, contenu, maillage interne et backlinks potentiels.",
+          "questions": [
+            "Quel est le mot-clé principal visé par la page ?",
+            "Le H1 et la meta title sont-ils alignés avec ce mot-clé ?",
+            "Quelle amélioration prioritaire proposeriez-vous pour gagner en positionnement ?"
+          ],
+          "suggested": [
+            "Le mot-clé principal doit correspondre à l'intention de recherche, pas seulement au nom du produit.",
+            "Un bon alignement : title orienté SERP, H1 orienté compréhension de la page, contenu structuré avec H2/H3.",
+            "Prioriser d'abord ce qui impacte le clic et la compréhension : title, description, contenu, rapidité, mobile."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seo-gsc-kpi",
+      "title": "SEO — KPIs & Google Search Console",
+      "pageLabel": "Page 3",
+      "level": "Intermédiaire",
+      "competence": "Lire les KPIs SEO, interpréter Google Search Console et transformer les constats en décisions",
+      "summary": "Google Search Console permet d'analyser les clics, impressions, CTR, position moyenne, pages indexées, erreurs d'exploration et sitemaps.",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Qu'est-ce qu'un KPI en SEO ?",
+          "options": {
+            "a": "Un indicateur clé de performance utilisé pour mesurer les résultats d'une stratégie SEO",
+            "b": "Un outil d'analyse des mots-clés",
+            "c": "Un indicateur uniquement lié à la vitesse"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 2,
+          "question": "Quel outil Google vérifie les performances organiques dans les résultats de recherche ?",
+          "options": {
+            "a": "Google Analytics",
+            "b": "Google Search Console",
+            "c": "Google Ads"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 3,
+          "question": "Quel KPI mesure l'engagement des utilisateurs sur un site en SEO ?",
+          "options": {
+            "a": "Le taux de conversion",
+            "b": "Le temps passé sur la page et le taux de rebond",
+            "c": "Le CPC"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 4,
+          "question": "Vrai ou Faux : Google Search Console permet de voir les impressions, mais pas les clics.",
+          "options": {
+            "a": "Vrai",
+            "b": "Faux"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 5,
+          "question": "Quel est le rôle de Google Search Console dans une stratégie SEO ?",
+          "options": {
+            "a": "Suivre uniquement les conversions",
+            "b": "Analyser les requêtes, le trafic organique et les erreurs d'exploration/indexation",
+            "c": "Gérer les campagnes publicitaires"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 6,
+          "question": "Qu'est-ce qu'une impression dans Google Search Console ?",
+          "options": {
+            "a": "Le nombre de clics sur un lien",
+            "b": "Le nombre de fois qu'une page apparaît dans les résultats de recherche",
+            "c": "Le nombre de visiteurs uniques"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 7,
+          "question": "Quel KPI peut aider à mesurer l'efficacité des backlinks ?",
+          "options": {
+            "a": "L'autorité de la page / du domaine",
+            "b": "Le nombre d'impressions",
+            "c": "Le taux de conversion uniquement"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 8,
+          "question": "Qu'est-ce qu'un rapport de couverture dans Google Search Console ?",
+          "options": {
+            "a": "Un rapport de vitesse",
+            "b": "Un rapport sur l'état d'exploration et d'indexation des pages",
+            "c": "Un rapport de ventes"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 9,
+          "question": "Comment utiliser le taux de conversion comme KPI SEO ?",
+          "options": {
+            "a": "Il mesure les mots-clés organiques",
+            "b": "Il mesure seulement le volume de trafic",
+            "c": "Il mesure les actions réalisées par les visiteurs organiques : achats, formulaires, inscriptions"
+          },
+          "answer": "c"
+        }
+      ],
+      "labs": [
+        {
+          "title": "Atelier 2 — Analyse d'une capture Google Search Console",
+          "intro": "La capture affiche environ 43,7 k clics, 238 k impressions, un CTR moyen de 18,4 % et une position moyenne de 9,6.",
+          "image": "assets/gsc_performance.png",
+          "questions": [
+            "De quel outil s'agit-il et pourquoi ?",
+            "Que sommes-nous en train d'analyser ?",
+            "Faites une analyse complète : points forts, alertes et décisions à prendre.",
+            "Si la couverture unique est de 10 000 utilisateurs, calculez le CTR unique avec les clics de la capture."
+          ],
+          "suggested": [
+            "Il s'agit de Google Search Console, car l'écran montre les métriques de performance organique : clics, impressions, CTR et position moyenne.",
+            "On analyse la performance SEO d'un site dans Google : visibilité, attractivité des résultats et évolution du trafic organique.",
+            "Lecture : 238 k impressions = forte visibilité, 43,7 k clics = trafic important, CTR 18,4 % = très bon taux de clic, position 9,6 = bas de première page. Décisions : renforcer les pages proches du top 3, améliorer title/meta description et travailler les requêtes à forte impression/faible CTR.",
+            "CTR unique = clics / couverture × 100 = 43 700 / 10 000 × 100 = 437 %. Ce résultat est supérieur à 100 %, donc il faut vérifier la définition de couverture unique ou utiliser le CTR moyen officiel : clics / impressions ≈ 18,4 %."
+          ]
+        },
+        {
+          "title": "Atelier 3 — Requête “bijouterie Casablanca”",
+          "intro": "La ligne montre une requête avec 127 clics et 2 058 impressions. Si le trafic total disponible sur ce mot-clé est de 500 clics, calculez la part captée par le site.",
+          "image": "assets/gsc_keyword_bijouterie.png",
+          "questions": [
+            "Calculez le CTR de la requête.",
+            "Calculez la part de trafic captée par bijouterie.ma si le trafic total est de 500 clics.",
+            "Quelle décision SEO proposeriez-vous ?"
+          ],
+          "suggested": [
+            "CTR = 127 / 2 058 × 100 ≈ 6,17 %. C'est correct mais améliorable si la requête est stratégique.",
+            "Part de trafic = 127 / 500 × 100 = 25,4 %. Le site capte environ un quart du potentiel estimé.",
+            "Optimiser la page ciblée : title plus local, contenu orienté achat, FAQ locale, avis clients, schema.org LocalBusiness et backlinks locaux."
+          ]
+        },
+        {
+          "title": "Atelier 4 — Sitemap & couverture d'indexation",
+          "intro": "La capture montre un sitemap soumis, lu par Google, avec 40 pages découvertes et une opération effectuée.",
+          "image": "assets/gsc_sitemap.png",
+          "questions": [
+            "De quel outil s'agit-il ? Pourquoi ?",
+            "Que signifie “Opération effectuée” ?",
+            "Quelle analyse faites-vous des 40 pages découvertes et 0 vidéo découverte ?"
+          ],
+          "suggested": [
+            "Il s'agit de Google Search Console, section Sitemaps, car on voit l'URL du sitemap, la dernière lecture, l'état et les pages découvertes.",
+            "Cela signifie que Google a pu lire le sitemap sans erreur bloquante.",
+            "40 pages découvertes indique que le sitemap couvre une partie du site. Il faut vérifier si toutes les pages importantes sont incluses, exclure les pages inutiles, et ne pas s'inquiéter du 0 vidéo si le site n'a pas de stratégie vidéo indexable."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seo-intentions-keywords",
+      "title": "SEO — Intentions de recherche & mots-clés",
+      "pageLabel": "Page 3",
+      "level": "Intermédiaire",
+      "competence": "Relier les mots-clés aux intentions de recherche et au tunnel de conversion",
+      "summary": "L'intention de recherche explique le besoin réel derrière la requête : s'informer, aller vers une marque, comparer, ou acheter.",
+      "qcms": [
+        {
+          "n": 1,
+          "question": "Qu'est-ce qu'une intention de recherche ?",
+          "options": {
+            "a": "L'objectif ou le besoin derrière une requête saisie par un utilisateur",
+            "b": "Un mot-clé à faible volume",
+            "c": "Une stratégie de référencement payant"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 2,
+          "question": "Quelle intention correspond à “acheter chaussures en ligne” ?",
+          "options": {
+            "a": "Navigationnelle",
+            "b": "Informationnelle",
+            "c": "Transactionnelle"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 3,
+          "question": "Quels sont les trois principaux types d'intention ?",
+          "options": {
+            "a": "Commerciale, locale, informative",
+            "b": "Navigationnelle, informationnelle, transactionnelle",
+            "c": "SEO, SEA, SEM"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 4,
+          "question": "Vrai ou Faux : les mots-clés evergreen sont pertinents uniquement pour des tendances saisonnières.",
+          "options": {
+            "a": "Vrai",
+            "b": "Faux"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 5,
+          "question": "Quel type de mot-clé est “cours de yoga pour débutants en ligne” ?",
+          "options": {
+            "a": "Courte traîne",
+            "b": "Longue traîne",
+            "c": "Evergreen uniquement"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 6,
+          "question": "Qu'est-ce qu'un mot-clé de longue traîne ?",
+          "options": {
+            "a": "Un mot-clé très concurrentiel avec peu de mots",
+            "b": "Un mot-clé composé de plusieurs mots, spécifique et souvent moins concurrentiel",
+            "c": "Un mot-clé utilisé uniquement en SEA"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 7,
+          "question": "Qu'est-ce qu'un mot-clé evergreen ?",
+          "options": {
+            "a": "Un mot-clé lié uniquement à Noël ou la Saint-Valentin",
+            "b": "Un mot-clé pertinent sur le long terme",
+            "c": "Un mot-clé utilisé uniquement en SEO"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 8,
+          "question": "Quelle intention reflète “meilleurs restaurants à Marrakech” ?",
+          "options": {
+            "a": "Navigationnelle",
+            "b": "Transactionnelle",
+            "c": "Informationnelle / investigation commerciale"
+          },
+          "answer": "c"
+        },
+        {
+          "n": 9,
+          "question": "Quel est l'avantage principal des mots-clés longue traîne ?",
+          "options": {
+            "a": "Plus de trafic mais moins qualifié",
+            "b": "Moins de concurrence et une intention plus précise",
+            "c": "Ils génèrent uniquement du trafic payant"
+          },
+          "answer": "b"
+        },
+        {
+          "n": 10,
+          "question": "Quelle intention est associée à “Netflix connexion” ?",
+          "options": {
+            "a": "Navigationnelle",
+            "b": "Transactionnelle",
+            "c": "Informationnelle"
+          },
+          "answer": "a"
+        },
+        {
+          "n": 11,
+          "question": "Différence entre evergreen et saisonnier ?",
+          "options": {
+            "a": "Un saisonnier est pertinent seulement à certaines périodes, contrairement à un evergreen",
+            "b": "Les saisonniers sont SEA et les evergreen SEO",
+            "c": "Aucune différence"
+          },
+          "answer": "a"
+        }
+      ],
+      "labs": [
+        {
+          "title": "Atelier 5.1 — Transformer un mot-clé en requêtes",
+          "intro": "Mot-clé de départ : voiture. Construisez une requête pour chaque intention.",
+          "questions": [
+            "Requête informationnelle : que veut apprendre l'utilisateur ?",
+            "Requête navigationnelle : quelle marque ou site veut-il rejoindre ?",
+            "Requête commerciale : que veut-il comparer avant de décider ?",
+            "Requête transactionnelle : quelle action d'achat veut-il faire ?"
+          ],
+          "suggested": [
+            "Informationnelle : comment choisir une voiture économique au Maroc ?",
+            "Navigationnelle : Renault Maroc voitures neuves.",
+            "Commerciale : meilleure voiture familiale 2026 Maroc comparatif.",
+            "Transactionnelle : acheter voiture d'occasion Casablanca prix."
+          ]
+        },
+        {
+          "title": "Atelier 5.3 — Rédiger des annonces selon l'intention",
+          "intro": "Rédigez quatre messages courts en respectant l'intention : aider, orienter, comparer, convertir.",
+          "questions": [
+            "Annonce informationnelle",
+            "Annonce navigationnelle",
+            "Annonce commerciale",
+            "Annonce transactionnelle"
+          ],
+          "suggested": [
+            "Guide gratuit : découvrez comment choisir une voiture fiable et économique selon votre budget.",
+            "Accédez au site officiel de la marque et consultez les modèles disponibles au Maroc.",
+            "Comparez les meilleures voitures familiales : prix, consommation, sécurité et options.",
+            "Réservez votre essai aujourd'hui et profitez d'une offre de financement adaptée."
+          ]
+        }
+      ],
+      "classification": {
+        "title": "Atelier 5.2 — Classifier les types de mots-clés",
+        "terms": [
+          "comment choisir une voiture économique",
+          "voiture électrique autonomie 2026",
+          "salon auto Casablanca",
+          "voiture hybride",
+          "acheter voiture d'occasion Casablanca",
+          "Renault Maroc",
+          "meilleure voiture familiale Maroc",
+          "prix assurance voiture jeune conducteur"
+        ],
+        "solution": {
+          "Question de longue traîne": [
+            "comment choisir une voiture économique",
+            "prix assurance voiture jeune conducteur"
+          ],
+          "Longue traîne": [
+            "voiture électrique autonomie 2026",
+            "acheter voiture d'occasion Casablanca",
+            "meilleure voiture familiale Maroc"
+          ],
+          "Évènement": [
+            "salon auto Casablanca"
+          ],
+          "Evergreen": [
+            "voiture hybride"
+          ],
+          "Navigationnelle": [
+            "Renault Maroc"
+          ]
+        }
+      }
+    },
+    {
+      "id": "seo-tunnel-action",
+      "title": "SEO — Tunnel de conversion & plan d'action",
+      "pageLabel": "Page 3",
+      "level": "Pratique professionnelle",
+      "competence": "Transformer l'analyse SEO en plan d'action priorisé",
+      "summary": "Une bonne recommandation SEO doit indiquer le problème, la preuve KPI, l'action à mener, la page concernée et l'impact attendu.",
+      "qcms": [],
+      "labs": [
+        {
+          "title": "Atelier 5.4 — Placer les messages dans le tunnel de conversion",
+          "intro": "Associez vos annonces ou contenus aux phases : Découverte, Intérêt, Questionnement, Considération, Conversion.",
+          "questions": [
+            "Découverte : quel contenu attire l'audience froide ?",
+            "Intérêt : quel contenu nourrit la curiosité ?",
+            "Questionnement : quel contenu répond aux objections ?",
+            "Considération : quel contenu aide à comparer ?",
+            "Conversion : quel contenu pousse à l'action ?"
+          ],
+          "suggested": [
+            "Découverte : article ou vidéo “Comment choisir une voiture économique ?”",
+            "Intérêt : guide comparatif par budget et usage.",
+            "Questionnement : FAQ financement, consommation, garantie, SAV.",
+            "Considération : comparatif modèles + avis clients + simulateur.",
+            "Conversion : page offre, formulaire d'essai, appel, WhatsApp ou réservation."
+          ]
+        },
+        {
+          "title": "Plan d'action SEO priorisé",
+          "intro": "Rédigez 3 recommandations à partir des ateliers précédents. Chaque recommandation doit être concrète et mesurable.",
+          "questions": [
+            "Priorité 1 — action rapide à fort impact CTR",
+            "Priorité 2 — action contenu / intention de recherche",
+            "Priorité 3 — action technique / indexation"
+          ],
+          "suggested": [
+            "Réécrire les meta titles/descriptions des pages avec fortes impressions mais CTR faible.",
+            "Créer des contenus longue traîne pour capter des requêtes plus qualifiées et moins concurrentielles.",
+            "Vérifier sitemap, robots.txt, pages indexables, vitesse mobile et erreurs de couverture dans Search Console."
+          ]
+        }
+      ]
     }
   ]
 };
@@ -1490,6 +2171,7 @@
     }
 
     function renderQCM(section) {
+      if (!section.qcms || !section.qcms.length) return '';
       return `<div class="q-grid">${section.qcms.map((item, idx) => {
         const qid = `${section.id}-q${idx+1}`;
         return `<article class="question-card" data-qid="${qid}" data-answer="${item.answer}">
@@ -1543,6 +2225,18 @@
       </div>`;
     }
 
+
+    function renderLabs(labs) {
+      if (!labs || !labs.length) return '';
+      return `<div class="lab-grid">${labs.map((lab, labIdx) => `<article class="lab-card">
+        <h3>${esc(lab.title)}</h3>
+        ${lab.intro ? `<p class="lab-intro">${esc(lab.intro)}</p>` : ''}
+        ${lab.image ? `<img class="lab-image" src="${esc(lab.image)}" alt="${esc(lab.title)}">` : ''}
+        ${(lab.questions || []).map((question, i) => `<div class="lab-answer"><label>${i+1}. ${esc(question)}</label><textarea placeholder="Votre réponse..."></textarea>${lab.suggested?.[i] ? `<details><summary>Exemple de correction</summary><p>${esc(lab.suggested[i])}</p></details>` : ''}</div>`).join('')}
+        <div class="lab-note">Méthode : observez → calculez → interprétez → proposez une décision concrète.</div>
+      </article>`).join('')}</div>`;
+    }
+
     function renderCaseStudy(cs) {
       if (!cs) return '';
       return `<div class="panel">
@@ -1553,15 +2247,17 @@
     }
 
     function render() {
-      $('#nav').innerHTML = workshopData.sections.map((s, i) => `<a href="#${s.id}">${i+1}. ${esc(s.title.replace(/^Section \d+ — /,''))}</a>`).join('') + `<a href="sea.html">Page 2 — SEA</a>`;
+      $('#nav').innerHTML = workshopData.sections.map((s, i) => `<a href="#${s.id}">${i+1}. ${esc((s.pageLabel ? s.pageLabel + ' · ' : '') + s.title.replace(/^Section \d+ — /,''))}</a>`).join('');
+      const labCount = workshopData.sections.reduce((acc, s) => acc + (s.labs?.length || 0), 0);
+      const classCount = workshopData.sections.reduce((acc, s) => acc + (s.classification ? 1 : 0), 0);
       $('#stats').innerHTML = `
         <div class="stat"><strong>${workshopData.sections.length}</strong><span>sections</span></div>
         <div class="stat"><strong>${totalQuestions}</strong><span>questions QCM</span></div>
-        <div class="stat"><strong>1</strong><span>exercice KPI</span></div>
-        <div class="stat"><strong>1</strong><span>cas d'audit</span></div>`;
+        <div class="stat"><strong>${labCount}</strong><span>ateliers pratiques</span></div>
+        <div class="stat"><strong>${classCount}</strong><span>drag & drop</span></div>`;
       $('#app').innerHTML = workshopData.sections.map(section => `<section class="section" id="${section.id}">
-        <div class="section-head"><h2>${esc(section.title)}</h2><div class="meta">Niveau : ${esc(section.level)} | Compétence visée : ${esc(section.competence)}</div></div>
-        <div class="content">${renderQCM(section)}${renderCalculation(section.calculation)}${renderClassification(section.classification)}${renderCaseStudy(section.caseStudy)}</div>
+        <div class="section-head">${section.pageLabel ? `<span class="source-badge">${esc(section.pageLabel)}</span>` : ''}<h2>${esc(section.title)}</h2><div class="meta">Niveau : ${esc(section.level)} | Compétence visée : ${esc(section.competence)}</div></div>
+        <div class="content">${section.summary ? `<div class="summary-card">${esc(section.summary)}</div>` : ''}${renderQCM(section)}${renderCalculation(section.calculation)}${renderClassification(section.classification)}${renderLabs(section.labs)}${renderCaseStudy(section.caseStudy)}</div>
       </section>`).join('');
       initClassificationDragDrop();
       updateScore();
