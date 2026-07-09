@@ -195,7 +195,63 @@
     details { border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; background: #fff; margin-top: 14px; }
     summary { cursor: pointer; font-weight: 850; color: var(--primary); }
     .term-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
-    .term { padding: 8px 10px; background: #f7f9fd; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; color: #334155; }
+    .term {
+      padding: 8px 10px;
+      background: #f7f9fd;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+      color: #334155;
+      user-select: none;
+      touch-action: none;
+    }
+    .term[draggable="true"] { cursor: grab; }
+    .term.dragging { opacity: .45; transform: scale(.98); }
+    .term.selected { outline: 3px solid rgba(23,78,166,.22); border-color: rgba(23,78,166,.55); }
+    .term.correct-class { border-color: rgba(22,163,74,.45); background: rgba(22,163,74,.11); color: #166534; }
+    .term.wrong-class { border-color: rgba(220,38,38,.45); background: rgba(220,38,38,.10); color: #991b1b; }
+    .classification-help { color: var(--muted); font-weight: 700; margin-top: -4px; }
+    .classification-board {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(185px, 1fr));
+      gap: 12px;
+      overflow-x: auto;
+      padding: 3px 0 6px;
+    }
+    .drop-column {
+      min-width: 185px;
+      border: 1px dashed rgba(23,78,166,.28);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fbfdff, #f5f9ff);
+      overflow: hidden;
+    }
+    .drop-column h4 {
+      margin: 0;
+      padding: 12px;
+      background: #d7eafe;
+      color: #17324d;
+      text-align: center;
+    }
+    .drop-zone {
+      min-height: 170px;
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 8px;
+      transition: background .15s ease, box-shadow .15s ease;
+    }
+    .source-zone {
+      min-height: 56px;
+      border: 1px dashed rgba(23,78,166,.22);
+      border-radius: 16px;
+      background: #fbfdff;
+      padding: 12px;
+    }
+    .drop-zone.drag-over { background: rgba(23,78,166,.07); box-shadow: inset 0 0 0 2px rgba(23,78,166,.18); }
+    .drop-placeholder { color: #8a96a8; font-weight: 700; font-size: .88rem; }
+    .classification-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+    .classification-feedback { font-weight: 850; color: var(--primary); }
     .solution-grid { display: grid; grid-template-columns: repeat(5, minmax(180px, 1fr)); gap: 12px; overflow-x: auto; }
     .solution-box { border: 1px solid var(--line); border-radius: 16px; padding: 14px; background: #fbfdff; min-width: 180px; }
     .solution-box h4 { margin: 0 0 8px; color: var(--primary); }
@@ -1460,12 +1516,28 @@
 
     function renderClassification(cls) {
       if (!cls) return '';
-      const boxes = Object.entries(cls.solution).map(([cat, terms]) => `<div class="solution-box"><h4>${esc(cat)}</h4><ul>${terms.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`).join('');
-      return `<div class="panel">
+      const labels = {
+        "Stratégie / voie stratégique": "Stratégie",
+        "Leviers": "Leviers",
+        "Tactiques": "Tactiques",
+        "Outils": "Outils",
+        "KPI": "KPI"
+      };
+      const termToCategory = {};
+      Object.entries(cls.solution).forEach(([cat, terms]) => terms.forEach(term => termToCategory[term] = cat));
+      const boxes = Object.entries(cls.solution).map(([cat, terms]) => `<div class="solution-box"><h4>${esc(labels[cat] || cat)}</h4><ul>${terms.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`).join('');
+      const columns = Object.keys(cls.solution).map(cat => `<div class="drop-column"><h4>${esc(labels[cat] || cat)}</h4><div class="drop-zone category-zone" data-category="${esc(cat)}"><span class="drop-placeholder">Déposez ici</span></div></div>`).join('');
+      return `<div class="panel classification-exercise" data-solution="${esc(JSON.stringify(termToCategory))}">
         <h3>${esc(cls.title)}</h3>
         <p>Classez chaque terme dans la bonne catégorie : Stratégie, Leviers, Tactiques, Outils ou KPI.</p>
-        <div class="term-cloud">${cls.terms.map(t => `<span class="term">${esc(t)}</span>`).join('')}</div>
-        <div class="table-wrap"><table><thead><tr><th>Stratégie</th><th>Leviers</th><th>Tactiques</th><th>Outils</th><th>KPI</th></tr></thead><tbody>${Array.from({length: 7}).map(()=>'<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>').join('')}</tbody></table></div>
+        <p class="classification-help">Glissez-déposez les termes dans les colonnes. Sur mobile, touchez un terme puis touchez la colonne.</p>
+        <div class="term-cloud source-zone drop-zone" data-category="source">${cls.terms.map(t => `<span class="term" draggable="true" data-term="${esc(t)}">${esc(t)}</span>`).join('')}</div>
+        <div class="classification-board">${columns}</div>
+        <div class="classification-actions">
+          <button type="button" class="btn-primary js-check-classification">Corriger la classification</button>
+          <button type="button" class="btn-secondary js-reset-classification">Remettre les termes</button>
+          <span class="classification-feedback" aria-live="polite"></span>
+        </div>
         <details><summary>Afficher une correction proposée</summary><div class="solution-grid">${boxes}</div></details>
       </div>`;
     }
@@ -1490,7 +1562,147 @@
         <div class="section-head"><h2>${esc(section.title)}</h2><div class="meta">Niveau : ${esc(section.level)} | Compétence visée : ${esc(section.competence)}</div></div>
         <div class="content">${renderQCM(section)}${renderCalculation(section.calculation)}${renderClassification(section.classification)}${renderCaseStudy(section.caseStudy)}</div>
       </section>`).join('');
+      initClassificationDragDrop();
       updateScore();
+    }
+
+    function updateDropPlaceholders(exercise) {
+      $$('.drop-zone', exercise).forEach(zone => {
+        const placeholder = $('.drop-placeholder', zone);
+        if (placeholder) placeholder.style.display = $('.term', zone) ? 'none' : 'inline-block';
+      });
+    }
+
+    function saveClassificationState(exercise) {
+      const state = {};
+      $$('.term[data-term]', exercise).forEach(term => {
+        const zone = term.closest('.drop-zone');
+        state[term.dataset.term] = zone?.dataset.category || 'source';
+      });
+      localStorage.setItem('atelierMarketingClassification', JSON.stringify(state));
+    }
+
+    function restoreClassificationState(exercise) {
+      try {
+        const state = JSON.parse(localStorage.getItem('atelierMarketingClassification') || '{}');
+        Object.entries(state).forEach(([termName, category]) => {
+          const term = $(`.term[data-term="${CSS.escape(termName)}"]`, exercise);
+          const zone = $(`.drop-zone[data-category="${CSS.escape(category)}"]`, exercise) || $('.source-zone', exercise);
+          if (term && zone) zone.appendChild(term);
+        });
+      } catch(e) {}
+      updateDropPlaceholders(exercise);
+    }
+
+    function clearClassificationMarks(exercise) {
+      $$('.term', exercise).forEach(term => {
+        term.classList.remove('correct-class', 'wrong-class', 'selected');
+        term.removeAttribute('title');
+      });
+      const feedback = $('.classification-feedback', exercise);
+      if (feedback) feedback.textContent = '';
+    }
+
+    function moveTermToZone(term, zone) {
+      if (!term || !zone) return;
+      zone.appendChild(term);
+      term.classList.remove('selected', 'correct-class', 'wrong-class');
+      term.removeAttribute('title');
+      const exercise = zone.closest('.classification-exercise');
+      updateDropPlaceholders(exercise);
+      saveClassificationState(exercise);
+    }
+
+    function checkClassification(exercise) {
+      const solution = JSON.parse(exercise.dataset.solution || '{}');
+      let correct = 0, placed = 0;
+      $$('.term[data-term]', exercise).forEach(term => {
+        term.classList.remove('correct-class', 'wrong-class', 'selected');
+        const zone = term.closest('.category-zone');
+        const chosen = zone?.dataset.category;
+        const expected = solution[term.dataset.term];
+        if (chosen) {
+          placed++;
+          if (chosen === expected) {
+            correct++;
+            term.classList.add('correct-class');
+            term.title = 'Correct';
+          } else {
+            term.classList.add('wrong-class');
+            term.title = `À placer dans : ${expected.replace(' / voie stratégique', '')}`;
+          }
+        }
+      });
+      const total = Object.keys(solution).length;
+      const feedback = $('.classification-feedback', exercise);
+      if (feedback) feedback.textContent = `${correct}/${total} corrects — ${placed}/${total} termes placés.`;
+      updateDropPlaceholders(exercise);
+    }
+
+    function checkAllClassifications() {
+      $$('.classification-exercise').forEach(checkClassification);
+    }
+
+    function initClassificationDragDrop() {
+      $$('.classification-exercise').forEach(exercise => {
+        let draggedTerm = null;
+        let selectedTerm = null;
+        const zones = $$('.drop-zone', exercise);
+
+        $$('.term[data-term]', exercise).forEach(term => {
+          term.addEventListener('dragstart', e => {
+            draggedTerm = term;
+            term.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', term.dataset.term);
+            e.dataTransfer.effectAllowed = 'move';
+          });
+          term.addEventListener('dragend', () => {
+            term.classList.remove('dragging');
+            zones.forEach(zone => zone.classList.remove('drag-over'));
+            draggedTerm = null;
+            updateDropPlaceholders(exercise);
+            saveClassificationState(exercise);
+          });
+          term.addEventListener('click', e => {
+            e.stopPropagation();
+            if (selectedTerm && selectedTerm !== term) selectedTerm.classList.remove('selected');
+            selectedTerm = selectedTerm === term ? null : term;
+            term.classList.toggle('selected', selectedTerm === term);
+          });
+        });
+
+        zones.forEach(zone => {
+          zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            zone.classList.add('drag-over');
+          });
+          zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const termName = e.dataTransfer.getData('text/plain');
+            const term = draggedTerm || $(`.term[data-term="${CSS.escape(termName)}"]`, exercise);
+            moveTermToZone(term, zone);
+          });
+          zone.addEventListener('click', () => {
+            if (selectedTerm) {
+              moveTermToZone(selectedTerm, zone);
+              selectedTerm = null;
+            }
+          });
+        });
+
+        $('.js-check-classification', exercise)?.addEventListener('click', () => checkClassification(exercise));
+        $('.js-reset-classification', exercise)?.addEventListener('click', () => {
+          const source = $('.source-zone', exercise);
+          $$('.term[data-term]', exercise).forEach(term => source.appendChild(term));
+          clearClassificationMarks(exercise);
+          updateDropPlaceholders(exercise);
+          localStorage.removeItem('atelierMarketingClassification');
+        });
+
+        restoreClassificationState(exercise);
+      });
     }
 
     function updateScore(mark=false) {
@@ -1529,10 +1741,10 @@
     }
 
     document.addEventListener('change', e => { if (e.target.matches('input[type=radio]')) updateScore(); });
-    $('#checkAnswers').addEventListener('click', () => { document.body.classList.add('show-answers'); updateScore(true); });
-    $('#showAll').addEventListener('click', () => { document.body.classList.add('show-answers'); updateScore(true); $$('details').forEach(d => d.open = true); });
-    $('#hideAll').addEventListener('click', () => { document.body.classList.remove('show-answers'); $$('.option').forEach(o => o.classList.remove('correct','wrong')); });
-    $('#resetAnswers').addEventListener('click', () => { $$('input[type=radio]').forEach(i => i.checked = false); $$('textarea').forEach(t => t.value = ''); localStorage.removeItem('atelierMarketingAnswers'); document.body.classList.remove('show-answers'); updateScore(false); });
+    $('#checkAnswers').addEventListener('click', () => { document.body.classList.add('show-answers'); updateScore(true); checkAllClassifications(); });
+    $('#showAll').addEventListener('click', () => { document.body.classList.add('show-answers'); updateScore(true); checkAllClassifications(); $$('details').forEach(d => d.open = true); });
+    $('#hideAll').addEventListener('click', () => { document.body.classList.remove('show-answers'); $$('.option').forEach(o => o.classList.remove('correct','wrong')); $$('.classification-exercise').forEach(clearClassificationMarks); });
+    $('#resetAnswers').addEventListener('click', () => { $$('input[type=radio]').forEach(i => i.checked = false); $$('textarea').forEach(t => t.value = ''); $$('.classification-exercise').forEach(exercise => { const source = $('.source-zone', exercise); $$('.term[data-term]', exercise).forEach(term => source.appendChild(term)); clearClassificationMarks(exercise); updateDropPlaceholders(exercise); }); localStorage.removeItem('atelierMarketingAnswers'); localStorage.removeItem('atelierMarketingClassification'); document.body.classList.remove('show-answers'); updateScore(false); });
 
     render();
     restoreAnswers();
